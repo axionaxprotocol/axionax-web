@@ -1,0 +1,9 @@
+﻿node_modules
+.next
+out
+dist
+.env*.local
+.vercel
+
+# Snyk Security Extension - AI Rules (auto-generated)
+.github\instructions\snyk_rules.instructions.md
