@@ -1,9 +1,25 @@
-﻿export default function Home() {
+﻿import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import Hero from '@/components/home/Hero';
+import Features from '@/components/home/Features';
+import Statistics from '@/components/home/Statistics';
+import Technology from '@/components/home/Technology';
+import Roadmap from '@/components/home/Roadmap';
+import Community from '@/components/home/Community';
+
+export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <h1 className="text-4xl font-bold">Axionax Protocol</h1>
-      <p className="mt-4 text-xl">Layer-1 blockchain for decentralized compute</p>
-      <p className="mt-2 text-gray-600">Coming soon...</p>
-    </main>
-  )
+    <div className="min-h-screen bg-dark-950">
+      <Navbar />
+      <main>
+        <Hero />
+        <Features />
+        <Statistics />
+        <Technology />
+        <Roadmap />
+        <Community />
+      </main>
+      <Footer />
+    </div>
+  );
 }
