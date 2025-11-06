@@ -1,92 +1,101 @@
-﻿# 🚀 AxionAX - Next Generation Blockchain Platform
+﻿# AxionAX Protocol - Web Interface 🌐
 
 <div align="center">
 
 ![AxionAX Logo](public/logo.svg)
 
-**Scalable • Secure • Sustainable**
+**Official Web Interface for AxionAX Blockchain Protocol**
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Next.js](https://img.shields.io/badge/Next.js-15.0-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
-[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED)](https://www.docker.com/)
+[![Protocol](https://img.shields.io/badge/Protocol-AxionAX-purple)](https://axionax.org)
 
-[Website](https://axionax.org) • [Documentation](https://docs.axionax.org) • [Explorer](https://explorer.axionax.org) • [Faucet](https://faucet.axionax.org)
+[Website](https://axionax.org) • [Documentation](https://docs.axionax.org) •
+[Explorer](https://explorer.axionax.org) • [Faucet](https://faucet.axionax.org)
 
 </div>
 
 ---
 
-## 📖 Table of Contents
+## 📖 About
 
-- [About](#about)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [Development](#development)
-- [Deployment](#deployment)
-- [Architecture](#architecture)
-- [API Documentation](#api-documentation)
-- [Contributing](#contributing)
-- [License](#license)
+This is the **official web interface** for the AxionAX Protocol - a
+next-generation Layer-1 blockchain designed for high-performance decentralized
+compute markets.
 
----
+### Part of AxionAX Ecosystem
 
-## 🌟 About
+This web interface connects to the core AxionAX Protocol:
 
-AxionAX is a next-generation blockchain platform designed for scalability, security, and sustainability. Built with cutting-edge technology, AxionAX provides:
+- **Protocol Core**: [`../core`](../core) - Rust/Python blockchain
+  implementation
+- **SDK**: [`../sdk`](../sdk) - TypeScript SDK (used by this interface)
+- **Documentation**: [`../docs`](../docs) - Protocol documentation
+- **Deployment**: [`../deploy`](../deploy) - Infrastructure for
+  RPC/Explorer/Faucet
 
-- ⚡ **High Performance**: 10,000+ TPS with sub-second finality
-- 🔒 **Enterprise Security**: Advanced cryptography and formal verification
-- 🌱 **Eco-Friendly**: Energy-efficient Proof of Stake consensus
-- 🛠️ **Developer Tools**: Comprehensive SDK and APIs
-- 🌐 **Interoperability**: Cross-chain bridges and standards
+**Main Repository**:
+[axionaxprotocol/axionaxiues](https://github.com/axionaxprotocol/axionaxiues)
 
 ---
 
-## ✨ Features
+## 🌟 Features
 
-### 🎯 Core Features
+### Core Web Features
 
+- **Landing Page** - Protocol overview and key features
 - **Block Explorer** - Real-time blockchain data visualization
-- **Testnet Faucet** - Easy token distribution for testing
-- **RPC Endpoint** - Full node access for developers
-- **Wallet Integration** - Connect with popular Web3 wallets
-- **Smart Contracts** - EVM-compatible execution environment
-- **Staking Dashboard** - Participate in network consensus
+  - Block and transaction search
+  - Account history and balances
+  - Network statistics
+- **Testnet Faucet** - Easy AXX token distribution for testing
+- **RPC Documentation** - Interactive API documentation
+- **Wallet Integration** - Connect with Web3 wallets
+- **Compute Marketplace** - Browse and purchase compute resources
 
-### 🛠️ Developer Tools
+### AxionAX Protocol Integration
 
-- **REST API** - RESTful APIs for blockchain data
-- **WebSocket API** - Real-time event subscriptions
-- **SDK & Libraries** - Official SDKs for multiple languages
-- **Documentation** - Comprehensive guides and tutorials
-- **Code Examples** - Ready-to-use code snippets
+- **Protocol-Aware**: Displays PoPC consensus data
+- **Real-Time Updates**: WebSocket connection to AxionAX nodes
+- **Network Status**: Shows testnet/mainnet health
+- **DAO Governance**: Community voting interface (coming soon)
 
 ---
 
 ## 🏗️ Tech Stack
 
 ### Frontend
-- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
-- **Language**: [TypeScript 5](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS 3](https://tailwindcss.com/)
+
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router) - React
+  framework
+- **Language**: [TypeScript 5](https://www.typescriptlang.org/) - Type safety
+- **Styling**: [Tailwind CSS 3](https://tailwindcss.com/) - Utility-first CSS
 - **UI Components**: Custom React components
 - **Icons**: Lucide React
 - **Animations**: Framer Motion
 
-### Backend Services
-- **Explorer API**: Node.js + Express
-- **Faucet API**: Node.js + Express
-- **RPC Node**: Go Ethereum (Geth)
+### AxionAX Protocol Integration
+
+- **SDK**: [`@axionax/sdk`](../sdk) - Official TypeScript SDK
+- **RPC**: JSON-RPC 2.0 connection to AxionAX nodes
+- **WebSocket**: Real-time blockchain updates
+- **Web3**: Wallet connection and transaction signing
+
+### Backend Services (via [`../deploy`](../deploy))
+
+- **Explorer API**: Node.js + Express (blockchain data)
+- **Faucet API**: Node.js + Express (testnet tokens)
+- **RPC Node**: AxionAX Protocol Core
 - **Database**: PostgreSQL 15
 - **Cache**: Redis 7
 
 ### Infrastructure
+
 - **Containerization**: Docker & Docker Compose
 - **Reverse Proxy**: Nginx
 - **CI/CD**: GitHub Actions
-- **Monitoring**: Prometheus + Grafana
+- **Hosting**: GitHub Pages (static) + VPS (dynamic services)
 
 ---
 
@@ -101,29 +110,32 @@ AxionAX is a next-generation blockchain platform designed for scalability, secur
 ### Quick Start
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/axionaxprotocol/axionax-web.git
    cd axionax-web
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Set up environment variables**
+
    ```bash
    cp .env.example .env
    # Edit .env with your configuration
    ```
 
 4. **Run development server**
+
    ```bash
    npm run dev
    ```
 
-5. **Open browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+5. **Open browser** Navigate to [http://localhost:3000](http://localhost:3000)
 
 ---
 
@@ -181,11 +193,13 @@ axionax-web/
 ### Code Style
 
 This project uses:
+
 - **ESLint** for code linting
 - **Prettier** for code formatting
 - **TypeScript** for type safety
 
 Run linting before committing:
+
 ```bash
 npm run lint
 npm run format
@@ -211,6 +225,7 @@ docker-compose down
 ```
 
 Services will be available at:
+
 - Web: http://localhost
 - Explorer API: http://localhost:3001
 - Faucet API: http://localhost:3002
@@ -228,6 +243,7 @@ npm run build
 ```
 
 Deploy to:
+
 - GitHub Pages
 - Netlify
 - Vercel
@@ -239,6 +255,7 @@ Deploy to:
 Complete guide for VPS deployment available in [DEPLOYMENT.md](DEPLOYMENT.md).
 
 Includes setup for:
+
 - Ubuntu/Debian VPS
 - Docker environment
 - Nginx reverse proxy
@@ -251,39 +268,52 @@ Includes setup for:
 
 ## 🏛️ Architecture
 
-### System Architecture
+### System Architecture - AxionAX Protocol Stack
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                    Nginx (Port 80/443)              │
-│              Reverse Proxy & Load Balancer          │
+│              Nginx (Port 80/443)                    │
+│         Reverse Proxy & Load Balancer               │
 └───────┬──────────┬──────────┬──────────┬───────────┘
         │          │          │          │
         ▼          ▼          ▼          ▼
-    ┌───────┐ ┌──────────┐ ┌────────┐ ┌─────┐
-    │  Web  │ │ Explorer │ │Faucet  │ │ RPC │
-    │(Next) │ │   API    │ │  API   │ │Node │
-    └───┬───┘ └────┬─────┘ └───┬────┘ └──┬──┘
-        │          │            │          │
-        └──────────┴────────────┴──────────┘
-                   │            │
-              ┌────▼────┐  ┌───▼───┐
+    ┌───────┐ ┌──────────┐ ┌────────┐ ┌─────────┐
+    │  Web  │ │ Explorer │ │Faucet  │ │AxionAX  │
+    │(Next) │ │   API    │ │  API   │ │Protocol │
+    │       │ │          │ │        │ │RPC Node │
+    └───┬───┘ └────┬─────┘ └───┬────┘ └────┬────┘
+        │          │            │           │
+        │          └────────────┴───────────┘
+        │                   │
+        │              ┌────▼────┐
+        │              │AxionAX  │
+        │              │Protocol │
+        │              │  Core   │
+        │              │(Rust)   │
+        │              └────┬────┘
+        │                   │
+        └───────────────────┘
+                   │
+              ┌────▼────┐  ┌───────┐
               │  Redis  │  │  DB   │
               │  Cache  │  │(Postgres)│
               └─────────┘  └───────┘
 ```
 
-### Service Components
+### Service Components - Connected to AxionAX Protocol
 
-| Service | Technology | Purpose |
-|---------|-----------|---------|
-| **Web** | Next.js 15 | Frontend UI & Static Pages |
-| **Explorer API** | Node.js + Express | Blockchain data API |
-| **Faucet API** | Node.js + Express | Testnet token distribution |
-| **RPC Node** | Geth | Blockchain node & RPC endpoint |
-| **PostgreSQL** | PostgreSQL 15 | Persistent data storage |
-| **Redis** | Redis 7 | Caching & session management |
-| **Nginx** | Nginx latest | Reverse proxy & SSL termination |
+| Service          | Technology    | Purpose             | Protocol Integration  |
+| ---------------- | ------------- | ------------------- | --------------------- |
+| **Web**          | Next.js 15    | Frontend UI         | Uses AxionAX SDK      |
+| **Explorer API** | Node.js       | Blockchain data API | Queries AxionAX Core  |
+| **Faucet API**   | Node.js       | Token distribution  | Sends tx to AxionAX   |
+| **RPC Node**     | AxionAX Core  | Protocol node       | Native implementation |
+| **PostgreSQL**   | PostgreSQL 15 | Data storage        | Indexes blockchain    |
+| **Redis**        | Redis 7       | Caching             | Performance layer     |
+| **Nginx**        | Nginx latest  | Reverse proxy       | SSL termination       |
+
+**All services work together to provide the complete AxionAX Protocol
+experience.**
 
 ---
 
@@ -294,21 +324,25 @@ Includes setup for:
 Base URL: `https://api.axionax.org`
 
 #### Get Latest Blocks
+
 ```http
 GET /api/blocks?limit=10
 ```
 
 #### Get Block by Number
+
 ```http
 GET /api/block/:number
 ```
 
 #### Get Transaction
+
 ```http
 GET /api/tx/:hash
 ```
 
 #### Get Address
+
 ```http
 GET /api/address/:address
 ```
@@ -318,6 +352,7 @@ GET /api/address/:address
 Base URL: `https://faucet-api.axionax.org`
 
 #### Request Tokens
+
 ```http
 POST /api/faucet
 Content-Type: application/json
@@ -329,6 +364,7 @@ Content-Type: application/json
 ```
 
 #### Check Faucet Status
+
 ```http
 GET /api/faucet/status
 ```
@@ -358,6 +394,7 @@ Full API documentation: [docs.axionax.org/api](https://docs.axionax.org/api)
 ## 🌐 VPS Deployment Specifications
 
 ### Minimum Requirements
+
 ```
 CPU:     2 vCPU cores
 RAM:     4 GB
@@ -368,6 +405,7 @@ Cost:    ~$10-20/month
 ```
 
 ### Recommended for Production
+
 ```
 CPU:     4 vCPU cores
 RAM:     8 GB
@@ -431,8 +469,7 @@ We welcome contributions! Please follow these steps:
 
 ### Reporting Security Issues
 
-If you discover a security vulnerability, please email:
-**security@axionax.org**
+If you discover a security vulnerability, please email: **security@axionax.org**
 
 Do not open public issues for security vulnerabilities.
 
@@ -440,44 +477,68 @@ Do not open public issues for security vulnerabilities.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
+for details.
 
 ---
 
-## 🔗 Links
+## 🔗 Links & AxionAX Protocol Ecosystem
+
+### AxionAX Protocol
+
+- **Main Repository**: https://github.com/axionaxprotocol/axionaxiues
+- **Protocol Core**: [`../core`](../core) - Blockchain implementation
+- **SDK**: [`../sdk`](../sdk) - Developer toolkit
+- **Documentation**: [`../docs`](../docs) or https://docs.axionax.org
+- **Deployment**: [`../deploy`](../deploy) - Infrastructure setup
+
+### Network Endpoints
 
 - **Website**: [axionax.org](https://axionax.org)
-- **Documentation**: [docs.axionax.org](https://docs.axionax.org)
 - **Block Explorer**: [explorer.axionax.org](https://explorer.axionax.org)
 - **Testnet Faucet**: [faucet.axionax.org](https://faucet.axionax.org)
+- **RPC Endpoint**: [rpc.axionax.org](https://rpc.axionax.org)
+
+### Development
+
 - **GitHub**: [github.com/axionaxprotocol](https://github.com/axionaxprotocol)
-- **Twitter**: [@AxionAX](https://twitter.com/AxionAX)
+- **Issues**:
+  [Report bugs](https://github.com/axionaxprotocol/axionaxiues/issues)
+- **Contributing**: See [`../docs/CONTRIBUTING.md`](../docs/CONTRIBUTING.md)
+
+### Community (Coming Q1 2026)
+
+- **Twitter**: [@AxionAX](https://twitter.com/axionaxprotocol)
 - **Discord**: [discord.gg/axionax](https://discord.gg/axionax)
 - **Telegram**: [t.me/axionax](https://t.me/axionax)
 
 ---
 
-## 🙏 Acknowledgments
+## � License
 
-- Next.js team for the amazing framework
-- Tailwind CSS for the utility-first CSS
-- The Ethereum community for inspiration
-- All contributors and supporters
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE)
+file for details.
+
+**Note**: The AxionAX Protocol Core uses AGPLv3. See
+[`../core/LICENSE`](../core/LICENSE).
 
 ---
 
-## 📊 Project Status
+## � Acknowledgments
 
-![GitHub stars](https://img.shields.io/github/stars/axionaxprotocol/axionax-web?style=social)
-![GitHub forks](https://img.shields.io/github/forks/axionaxprotocol/axionax-web?style=social)
-![GitHub issues](https://img.shields.io/github/issues/axionaxprotocol/axionax-web)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/axionaxprotocol/axionax-web)
-![GitHub last commit](https://img.shields.io/github/last-commit/axionaxprotocol/axionax-web)
+- **AxionAX Protocol Team** - Core blockchain development
+- Next.js team - Amazing React framework
+- Tailwind CSS - Utility-first CSS
+- The blockchain community - Inspiration and support
 
 ---
 
 <div align="center">
 
-**Built with ❤️ by the AxionAX Team**
+**Part of the AxionAX Protocol Ecosystem**
+
+Built with ❤️ by the AxionAX Team
+
+**Last Updated**: November 6, 2025
 
 </div>
