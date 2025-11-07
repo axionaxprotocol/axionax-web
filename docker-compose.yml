@@ -54,7 +54,7 @@ services:
     image: alpine:latest
     container_name: axionax-rpc
     restart: unless-stopped
-    command: sh -c "echo 'AxionAX RPC Node placeholder - implement your node here' && sleep infinity"
+    command: sh -c "echo 'axionax RPC Node placeholder - implement your node here' && sleep infinity"
     ports:
       - "8545:8545"
       - "8546:8546"

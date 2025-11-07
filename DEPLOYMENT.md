@@ -1,8 +1,8 @@
-# AxionAX VPS Deployment Guide
+# axionax VPS Deployment Guide
 
 ## 🚀 Complete Setup for VPS Deployment
 
-This guide will help you deploy the entire AxionAX infrastructure on a VPS (Linux or Windows), including:
+This guide will help you deploy the entire axionax infrastructure on a VPS (Linux or Windows), including:
 - Web Frontend
 - Block Explorer API
 - Faucet API

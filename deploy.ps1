@@ -1,6 +1,6 @@
-# AxionAX VPS Deployment Script (Windows)
+# axionax VPS Deployment Script (Windows)
 
-Write-Host "🚀 AxionAX Deployment Script" -ForegroundColor Green
+Write-Host "🚀 axionax Deployment Script" -ForegroundColor Green
 Write-Host "==============================" -ForegroundColor Green
 
 # Check if Docker is running

@@ -12,6 +12,7 @@ export default function Navbar() {
     { name: 'Explorer', href: '/explorer' },
     { name: 'Faucet', href: '/faucet' },
     { name: 'Docs', href: '/docs' },
+    { name: 'Core Repo', href: 'https://github.com/axionaxprotocol/axionax-core' },
     { name: 'GitHub', href: 'https://github.com/axionaxprotocol' },
   ];
 
@@ -22,9 +23,9 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center font-bold text-white">
-              AX
+              ax
             </div>
-            <span className="text-xl font-bold gradient-text">AxionAX</span>
+            <span className="text-xl font-bold gradient-text">axionax</span>
           </Link>
 
           {/* Desktop Navigation */}

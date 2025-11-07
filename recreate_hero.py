@@ -1,4 +1,6 @@
-'use client';
+import os
+
+hero_content = """'use client';
 
 import Button from '@/components/ui/Button';
 import Link from 'next/link';
@@ -77,3 +79,18 @@ export default function Hero() {
     </section>
   );
 }
+"""
+
+file_path = "src/components/home/Hero.tsx"
+
+# Remove old file
+if os.path.exists(file_path):
+    os.remove(file_path)
+    print(f"Removed old {file_path}")
+
+# Create new clean file
+with open(file_path, 'w', encoding='utf-8') as f:
+    f.write(hero_content)
+    print(f"Created new {file_path}")
+
+print("Done!")

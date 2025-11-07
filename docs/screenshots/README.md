@@ -1,4 +1,4 @@
-# AxionAX Web Screenshots
+# axionax Web Screenshots
 
 This directory contains screenshots for the README.md documentation.
 
@@ -6,7 +6,7 @@ This directory contains screenshots for the README.md documentation.
 
 Please add the following screenshot files to this directory:
 
-1. **home.png** - Landing page showcasing AxionAX Protocol
+1. **home.png** - Landing page showcasing axionax protocol
    - Should show hero section, features, and call-to-action
    - Recommended size: 1920x1080 or similar 16:9 ratio
 
@@ -49,7 +49,7 @@ Please add the following screenshot files to this directory:
 ### Placeholder Images
 
 Until actual screenshots are available, you can use placeholders:
-- https://via.placeholder.com/1920x1080.png?text=AxionAX+Home
+- https://via.placeholder.com/1920x1080.png?text=axionax+Home
 - https://via.placeholder.com/1920x1080.png?text=Block+Explorer
 - https://via.placeholder.com/1920x1080.png?text=Faucet
 - https://via.placeholder.com/1920x1080.png?text=Marketplace

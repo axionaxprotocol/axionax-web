@@ -1,16 +1,16 @@
-# 🚀 Axionax Public Testnet Launch Announcement
+# 🚀 axionax Public Testnet Launch Announcement
 
 **Date**: November 5, 2025  
-**Network**: Axionax Public Testnet  
+**Network**: axionax Public Testnet  
 **Chain ID**: `axionax-testnet-1`
 
 ---
 
 ## 🎉 We're Live!
 
-We're excited to announce the launch of **Axionax Public Testnet** – a Layer-1 blockchain with Proof of Probabilistic Checking (PoPC) consensus, designed for decentralized compute markets with built-in AI security.
+We're excited to announce the launch of **axionax Public Testnet** – a Layer-1 blockchain with Proof of Probabilistic Checking (PoPC) consensus, designed for decentralized compute markets with built-in AI security.
 
-The testnet is now open for developers, validators, and community members to explore, test, and build on the Axionax protocol.
+The testnet is now open for developers, validators, and community members to explore, test, and build on the axionax protocol.
 
 ---
 
@@ -61,9 +61,9 @@ npm install @axionax/sdk
 
 **2. Connect to Testnet**
 ```typescript
-import { AxionaxClient } from '@axionax/sdk';
+import { axionaxClient } from '@axionax/sdk';
 
-const client = new AxionaxClient({
+const client = new axionaxClient({
   rpcUrl: 'https://rpc.axionax.org',
   chainId: 1001
 });
@@ -109,7 +109,7 @@ Join the testnet as a validator and help secure the network:
 
 ### Setup Steps
 
-**1. Install Axionax Node**
+**1. Install axionax Node**
 ```bash
 git clone https://github.com/axionaxprotocol/axionax-core.git
 cd axionax-core
@@ -150,7 +150,7 @@ cp genesis.json ~/.axionax/config/
 
 ---
 
-## 🏗️ Build on Axionax
+## 🏗️ Build on axionax
 
 ### What You Can Build
 
@@ -276,7 +276,7 @@ Security researchers: We offer rewards for valid vulnerabilities.
 ### Community
 - **Discord**: https://discord.gg/axionax
 - **Telegram**: https://t.me/axionax
-- **Twitter**: @AxionaxProtocol
+- **Twitter**: @axionaxProtocol
 - **Forum**: https://forum.axionax.org
 
 ### Resources
@@ -325,7 +325,7 @@ Special thanks to:
 
 ## 🚀 Join the Revolution
 
-Axionax is building the future of decentralized compute. Join us in creating a more efficient, secure, and accessible blockchain infrastructure.
+axionax is building the future of decentralized compute. Join us in creating a more efficient, secure, and accessible blockchain infrastructure.
 
 **Get Started Today:**
 1. ✅ Get testnet tokens: https://faucet.axionax.org
@@ -338,4 +338,4 @@ Axionax is building the future of decentralized compute. Join us in creating a m
 
 **Happy testing! 🎉**
 
-*Follow our progress: [Twitter](https://twitter.com/AxionaxProtocol) | [Discord](https://discord.gg/axionax) | [GitHub](https://github.com/axionaxprotocol)*
+*Follow our progress: [Twitter](https://twitter.com/axionaxProtocol) | [Discord](https://discord.gg/axionax) | [GitHub](https://github.com/axionaxprotocol)*

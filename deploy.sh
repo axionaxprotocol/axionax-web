@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# AxionAX VPS Deployment Script
+# axionax VPS Deployment Script
 set -e
 
-echo "🚀 AxionAX Deployment Script"
+echo "🚀 axionax Deployment Script"
 echo "=============================="
 
 # Colors

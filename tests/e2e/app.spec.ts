@@ -16,7 +16,7 @@ test.describe('Web Application E2E Tests', () => {
 
   test.describe('Landing Page', () => {
     test('should load homepage successfully', async ({ page }) => {
-      await expect(page).toHaveTitle(/Axionax/);
+      await expect(page).toHaveTitle(/axionax/);
       
       // Check for key elements
       await expect(page.locator('h1')).toBeVisible();

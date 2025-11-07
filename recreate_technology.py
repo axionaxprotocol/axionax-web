@@ -1,4 +1,6 @@
-import React from 'react';
+import os
+
+tech_content = """import React from 'react';
 
 export default function Technology() {
   const techStack = [
@@ -118,3 +120,16 @@ pub fn validate_block(block: &Block) -> Result<()> {
     </section>
   );
 }
+"""
+
+file_path = "src/components/home/Technology.tsx"
+
+if os.path.exists(file_path):
+    os.remove(file_path)
+    print(f"Removed old {file_path}")
+
+with open(file_path, 'w', encoding='utf-8') as f:
+    f.write(tech_content)
+    print(f"Created new {file_path}")
+
+print("Done!")

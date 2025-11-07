@@ -1,4 +1,7 @@
-'use client';
+import os
+
+# Clean Statistics content
+content = """'use client';
 
 import React from 'react';
 
@@ -89,3 +92,18 @@ export default function Statistics() {
     </section>
   );
 }
+"""
+
+filepath = r"D:\Desktop\axionaxius01\axionax-web\src\components\home\Statistics.tsx"
+
+# Remove old file
+if os.path.exists(filepath):
+    os.remove(filepath)
+    print(f"Removed old file: {filepath}")
+
+# Write new content
+with open(filepath, 'w', encoding='utf-8') as f:
+    f.write(content)
+    print(f"Created new file: {filepath}")
+    
+print("Done!")

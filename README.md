@@ -1,15 +1,15 @@
-﻿# Axionax Protocol - Web Interface 🌐
+﻿# axionax protocol - Web Interface 🌐
 
 <div align="center">
 
 ![axionax Logo](public/logo.svg)
 
-**Official Web Interface for axionax Blockchain Protocol**
+**Official Web Interface for axionax Blockchain protocol**
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Next.js](https://img.shields.io/badge/Next.js-15.0-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
-[![Protocol](https://img.shields.io/badge/Protocol-AxionAX-purple)](https://axionax.org)
+[![Protocol](https://img.shields.io/badge/Protocol-axionax-purple)](https://axionax.org)
 
 [Website](https://axionax.org) • [Documentation](https://docs.axionax.org) •
 [Explorer](https://explorer.axionax.org) • [Faucet](https://faucet.axionax.org)
@@ -36,8 +36,8 @@ Recent updates:
 ## 🖼️ Screenshots
 
 ### Home Page
-![AxionAX Home Page](docs/screenshots/home.png)
-*Landing page showcasing Axionax Protocol features and roadmap*
+![axionax Home Page](docs/screenshots/home.png)
+*Landing page showcasing axionax protocol features and roadmap*
 
 ### Block Explorer
 ![Block Explorer](docs/screenshots/explorer.png)
@@ -55,7 +55,7 @@ Recent updates:
 
 ## About
 
-Official web interface for Axionax Protocol - a next-generation Layer-1 blockchain for decentralized compute markets.
+Official web interface for axionax protocol - a next-generation Layer-1 blockchain for decentralized compute markets.
 
 **Repository**: [axionaxprotocol/axionax-web](https://github.com/axionaxprotocol/axionax-web)
 
@@ -72,13 +72,13 @@ Official web interface for Axionax Protocol - a next-generation Layer-1 blockcha
 
 ## �📖 About
 
-This is the **official web interface** for the AxionAX Protocol - a
+This is the **official web interface** for the axionax protocol - a
 next-generation Layer-1 blockchain designed for high-performance decentralized
 compute markets.
 
-### Part of AxionAX Ecosystem
+### Part of axionax Ecosystem
 
-This web interface connects to the core AxionAX Protocol:
+This web interface connects to the core axionax protocol:
 
 - **Protocol Core**: [`../axionax-core`](../axionax-core) - Rust/Python blockchain implementation
 - **SDK**: [`../axionax-sdk-ts`](../axionax-sdk-ts) - TypeScript SDK (used by this interface)
@@ -124,7 +124,7 @@ This web interface connects to the core AxionAX Protocol:
 ### Web3 Integration
 
 - **SDK**: [`@axionax/sdk`](../axionax-sdk-ts) - Official TypeScript SDK
-- **RPC**: JSON-RPC 2.0 connection to AxionAX nodes
+- **RPC**: JSON-RPC 2.0 connection to axionax nodes
 - **WebSocket**: Real-time blockchain updates
 - **Wallet**: MetaMask and Web3 wallet support
 
@@ -291,7 +291,7 @@ For production deployment with full backend stack (RPC, Explorer API, Faucet), s
 
 ```
 ┌─────────────────────────────────────┐
-│     AxionAX Web Interface           │
+│     axionax Web Interface           │
 │         (Next.js 15)                │
 └────────┬────────────────────────────┘
          │
@@ -307,7 +307,7 @@ For production deployment with full backend stack (RPC, Explorer API, Faucet), s
          │   └── Feature Components
          │
          └── Integration
-             ├── AxionAX SDK
+             ├── axionax SDK
              ├── RPC Client
              ├── WebSocket
              └── Web3 Wallet
@@ -327,13 +327,13 @@ For production deployment with full backend stack (RPC, Explorer API, Faucet), s
 
 ## � Integration
 
-### Using AxionAX SDK
+### Using axionax SDK
 
 ```typescript
-import { AxionAXClient } from '@axionax/sdk';
+import { axionaxClient } from '@axionax/sdk';
 
-// Connect to AxionAX network
-const client = new AxionAXClient({
+// Connect to axionax network
+const client = new axionaxClient({
   rpcUrl: 'https://rpc.axionax.org',
   chainId: 86137 // Testnet
 });
@@ -354,10 +354,10 @@ import { ethers } from 'ethers';
 const provider = new ethers.BrowserProvider(window.ethereum);
 await provider.send('eth_requestAccounts', []);
 
-// Add AxionAX network
+// Add axionax network
 await provider.send('wallet_addEthereumChain', [{
   chainId: '0x15079', // 86137 in hex
-  chainName: 'AxionAX Testnet',
+  chainName: 'axionax Testnet',
   rpcUrls: ['https://rpc.axionax.org'],
   nativeCurrency: {
     name: 'AXX',
@@ -423,7 +423,7 @@ Do not open public issues for security vulnerabilities.
 
 ## 🔗 Links & Resources
 
-### AxionAX Protocol
+### axionax protocol
 
 | Component            | Description               | Location                                         | Status     |
 | -------------------- | ------------------------- | ------------------------------------------------ | ---------- |
@@ -438,7 +438,7 @@ Do not open public issues for security vulnerabilities.
 
 **Main Repository**: https://github.com/axionaxprotocol/axionaxiues
 
-### AxionAX Network
+### axionax Network
 
 - **Testnet RPC**: [rpc.axionax.org](https://rpc.axionax.org)
 - **Block Explorer**: [explorer.axionax.org](https://explorer.axionax.org)
@@ -453,7 +453,7 @@ Do not open public issues for security vulnerabilities.
 
 ### Community (Coming Q1 2026)
 
-- **Twitter**: [@AxionAX](https://twitter.com/axionaxprotocol)
+- **Twitter**: [@axionax](https://twitter.com/axionaxprotocol)
 - **Discord**: [discord.gg/axionax](https://discord.gg/axionax)
 - **Telegram**: [t.me/axionax](https://t.me/axionax)
 
@@ -463,7 +463,7 @@ Do not open public issues for security vulnerabilities.
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
-**Note**: The AxionAX Protocol Core uses AGPLv3. See [`../axionax-core/LICENSE`](../axionax-core/LICENSE).
+**Note**: The axionax protocol Core uses AGPLv3. See [`../axionax-core/LICENSE`](../axionax-core/LICENSE).
 
 ---
 
@@ -472,15 +472,15 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - **Next.js Team** - Amazing React framework
 - **Tailwind CSS** - Utility-first CSS framework
 - **Vercel** - Hosting and deployment platform
-- **AxionAX Community** - Feedback and support
+- **axionax Community** - Feedback and support
 
 ---
 
 <div align="center">
 
-**Part of the AxionAX Protocol Ecosystem**
+**Part of the axionax protocol Ecosystem**
 
-Built with ❤️ by the Axionax Team
+Built with ❤️ by the axionax Team
 
 **Last Updated**: November 7, 2025
 
