@@ -53,6 +53,23 @@ Recent updates:
 
 ---
 
+## About
+
+Official web interface for AxionAX Protocol - a next-generation Layer-1 blockchain for decentralized compute markets.
+
+**Repository**: [axionaxprotocol/axionax-web](https://github.com/axionaxprotocol/axionax-web)
+
+**Related Projects**:
+- **SDK**: [`axionax-sdk-ts`](../axionax-sdk-ts) - TypeScript SDK
+- **Docs**: [`axionax-docs`](../axionax-docs) - Documentation
+- **Deploy**: [`axionax-deploy`](../axionax-deploy) - Backend infrastructure
+
+---
+
+## Features
+
+---
+
 ## �📖 About
 
 This is the **official web interface** for the AxionAX Protocol - a
@@ -80,24 +97,15 @@ This web interface connects to the core AxionAX Protocol:
 
 ## 🌟 Features
 
-### Core Web Features
-
 - **Landing Page** - Protocol overview and key features
 - **Block Explorer** - Real-time blockchain data visualization
   - Block and transaction search
   - Account history and balances
   - Network statistics
-- **Testnet Faucet** - Easy AXX token distribution for testing
-- **RPC Documentation** - Interactive API documentation
-- **Wallet Integration** - Connect with Web3 wallets
-- **Compute Marketplace** - Browse and purchase compute resources
-
-### AxionAX Protocol Integration
-
-- **Protocol-Aware**: Displays PoPC consensus data
-- **Real-Time Updates**: WebSocket connection to AxionAX nodes
-- **Network Status**: Shows testnet/mainnet health
-- **DAO Governance**: Community voting interface (coming soon)
+- **Testnet Faucet** - Easy AXX token distribution
+- **API Docs** - Interactive API documentation
+- **Wallet Integration** - MetaMask and Web3 wallet support
+- **Compute Marketplace** - Browse compute resources
 
 ---
 
@@ -113,27 +121,18 @@ This web interface connects to the core AxionAX Protocol:
 - **Icons**: Lucide React
 - **Animations**: Framer Motion
 
-### AxionAX Protocol Integration
+### Web3 Integration
 
-- **SDK**: [`@axionax/sdk`](../sdk) - Official TypeScript SDK
+- **SDK**: [`@axionax/sdk`](../axionax-sdk-ts) - Official TypeScript SDK
 - **RPC**: JSON-RPC 2.0 connection to AxionAX nodes
 - **WebSocket**: Real-time blockchain updates
-- **Web3**: Wallet connection and transaction signing
+- **Wallet**: MetaMask and Web3 wallet support
 
-### Backend Services (via [`../deploy`](../deploy))
+### Development Tools
 
-- **Explorer API**: Node.js + Express (blockchain data)
-- **Faucet API**: Node.js + Express (testnet tokens)
-- **RPC Node**: AxionAX Protocol Core
-- **Database**: PostgreSQL 15
-- **Cache**: Redis 7
-
-### Infrastructure
-
-- **Containerization**: Docker & Docker Compose
-- **Reverse Proxy**: Nginx
+- **Build**: Vite / Next.js build system
 - **CI/CD**: GitHub Actions
-- **Hosting**: GitHub Pages (static) + VPS (dynamic services)
+- **Hosting**: Vercel, Netlify, GitHub Pages, or VPS
 
 ---
 
@@ -247,31 +246,7 @@ npm run format
 
 ## 🚢 Deployment
 
-### Option 1: Docker Deployment (Recommended)
-
-Deploy the entire stack with Docker Compose:
-
-```bash
-# Build and start all services
-docker-compose up -d
-
-# View logs
-docker-compose logs -f
-
-# Stop all services
-docker-compose down
-```
-
-Services will be available at:
-
-- Web: http://localhost
-- Explorer API: http://localhost:3001
-- Faucet API: http://localhost:3002
-- RPC: http://localhost:8545
-
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed VPS deployment guide (supports both Linux and Windows).
-
-### Option 2: Static Export
+### Option 1: Static Export (Recommended)
 
 Build and export as static site:
 
@@ -282,200 +257,128 @@ npm run build
 
 Deploy to:
 
-- GitHub Pages
-- Netlify
-- Vercel
-- Cloudflare Pages
+- **Vercel** (Recommended for Next.js)
+- **Netlify**
+- **GitHub Pages**
+- **Cloudflare Pages**
 - Any static hosting
 
-### Option 3: VPS Deployment
+### Option 2: Docker Deployment
 
-Complete guide for VPS deployment available in [DEPLOYMENT.md](DEPLOYMENT.md).
+For full-stack local development:
 
-**Supports Both Platforms:**
-- 🐧 **Linux**: Ubuntu 20.04+, Debian 11+, CentOS 8+
-- 🪟 **Windows**: Server 2019+, Windows 10/11 Pro
+```bash
+# Build and start web interface
+docker-compose up -d web
 
-**Includes setup for:**
-- Docker environment (Linux/Windows)
-- **DNS Configuration** - See [DNS Setup Guide](docs/DNS_SETUP.md)
-- Nginx reverse proxy
-- SSL certificates (Let's Encrypt/win-acme)
-- Multiple subdomains
-- Database management
-- Firewall configuration (UFW/Windows Firewall)
-- Platform-specific monitoring tools
-- Performance tuning tips
+# View logs
+docker-compose logs -f web
+```
+
+### Option 3: Production VPS Deployment
+
+For production deployment with full backend stack (RPC, Explorer API, Faucet), see:
+
+- **[DEPLOYMENT.md](DEPLOYMENT.md)** - Complete VPS deployment guide
+- **[DNS Setup Guide](docs/DNS_SETUP.md)** - Domain configuration
+- **[axionax-deploy](../axionax-deploy)** - Backend infrastructure
 
 ---
 
-## 🏛️ Architecture
+## 🏛️ Web Architecture
 
-### System Architecture - AxionAX Protocol Stack
+### Frontend Architecture
 
 ```
-┌─────────────────────────────────────────────────────┐
-│              Nginx (Port 80/443)                    │
-│         Reverse Proxy & Load Balancer               │
-└───────┬──────────┬──────────┬──────────┬───────────┘
-        │          │          │          │
-        ▼          ▼          ▼          ▼
-    ┌───────┐ ┌──────────┐ ┌────────┐ ┌─────────┐
-    │  Web  │ │ Explorer │ │Faucet  │ │AxionAX  │
-    │(Next) │ │   API    │ │  API   │ │Protocol │
-    │       │ │          │ │        │ │RPC Node │
-    └───┬───┘ └────┬─────┘ └───┬────┘ └────┬────┘
-        │          │            │           │
-        │          └────────────┴───────────┘
-        │                   │
-        │              ┌────▼────┐
-        │              │AxionAX  │
-        │              │Protocol │
-        │              │  Core   │
-        │              │(Rust)   │
-        │              └────┬────┘
-        │                   │
-        └───────────────────┘
-                   │
-              ┌────▼────┐  ┌───────┐
-              │  Redis  │  │  DB   │
-              │  Cache  │  │(Postgres)│
-              └─────────┘  └───────┘
+┌─────────────────────────────────────┐
+│     AxionAX Web Interface           │
+│         (Next.js 15)                │
+└────────┬────────────────────────────┘
+         │
+         ├── Pages/Routes
+         │   ├── Home (/)
+         │   ├── Explorer (/explorer)
+         │   ├── Faucet (/faucet)
+         │   └── Docs (/docs)
+         │
+         ├── Components
+         │   ├── UI Components
+         │   ├── Layout (Navbar, Footer)
+         │   └── Feature Components
+         │
+         └── Integration
+             ├── AxionAX SDK
+             ├── RPC Client
+             ├── WebSocket
+             └── Web3 Wallet
 ```
 
-### Service Components - Connected to AxionAX Protocol
+### Component Structure
 
-| Service          | Technology    | Purpose             | Protocol Integration  |
-| ---------------- | ------------- | ------------------- | --------------------- |
-| **Web**          | Next.js 15    | Frontend UI         | Uses AxionAX SDK      |
-| **Explorer API** | Node.js       | Blockchain data API | Queries AxionAX Core  |
-| **Faucet API**   | Node.js       | Token distribution  | Sends tx to AxionAX   |
-| **RPC Node**     | AxionAX Core  | Protocol node       | Native implementation |
-| **PostgreSQL**   | PostgreSQL 15 | Data storage        | Indexes blockchain    |
-| **Redis**        | Redis 7       | Caching             | Performance layer     |
-| **Nginx**        | Nginx latest  | Reverse proxy       | SSL termination       |
-
-**All services work together to provide the complete AxionAX Protocol
-experience.**
+| Layer              | Technology         | Purpose                    |
+| ------------------ | ------------------ | -------------------------- |
+| **UI Layer**       | React + Tailwind   | User interface             |
+| **State**          | React Hooks        | State management           |
+| **API Client**     | @axionax/sdk       | Blockchain interaction     |
+| **Web3**           | ethers.js          | Wallet connection          |
+| **Build**          | Next.js            | SSR/SSG optimization       |
 
 ---
 
-## 📡 API Documentation
+## � Integration
 
-### Explorer API
+### Using AxionAX SDK
 
-Base URL: `https://api.axionax.org`
+```typescript
+import { AxionAXClient } from '@axionax/sdk';
 
-#### Get Latest Blocks
+// Connect to AxionAX network
+const client = new AxionAXClient({
+  rpcUrl: 'https://rpc.axionax.org',
+  chainId: 86137 // Testnet
+});
 
-```http
-GET /api/blocks?limit=10
+// Get latest block
+const block = await client.getLatestBlock();
+
+// Get transaction
+const tx = await client.getTransaction(txHash);
 ```
 
-#### Get Block by Number
+### Connecting Wallet
 
-```http
-GET /api/block/:number
+```typescript
+import { ethers } from 'ethers';
+
+// Connect MetaMask
+const provider = new ethers.BrowserProvider(window.ethereum);
+await provider.send('eth_requestAccounts', []);
+
+// Add AxionAX network
+await provider.send('wallet_addEthereumChain', [{
+  chainId: '0x15079', // 86137 in hex
+  chainName: 'AxionAX Testnet',
+  rpcUrls: ['https://rpc.axionax.org'],
+  nativeCurrency: {
+    name: 'AXX',
+    symbol: 'AXX',
+    decimals: 18
+  },
+  blockExplorerUrls: ['https://explorer.axionax.org']
+}]);
 ```
 
-#### Get Transaction
+### Environment Variables
 
-```http
-GET /api/tx/:hash
-```
-
-#### Get Address
-
-```http
-GET /api/address/:address
-```
-
-### Faucet API
-
-Base URL: `https://faucet-api.axionax.org`
-
-#### Request Tokens
-
-```http
-POST /api/faucet
-Content-Type: application/json
-
-{
-  "address": "0x...",
-  "captcha": "token"
-}
-```
-
-#### Check Faucet Status
-
-```http
-GET /api/faucet/status
-```
-
-### RPC Endpoint
-
-Base URL: `https://rpc.axionax.org`
-
-Standard JSON-RPC 2.0 interface compatible with Ethereum:
-
-```javascript
-// Example: Get latest block
-curl -X POST https://rpc.axionax.org \
-  -H "Content-Type: application/json" \
-  -d '{
-    "jsonrpc": "2.0",
-    "method": "eth_blockNumber",
-    "params": [],
-    "id": 1
-  }'
+```bash
+# .env.local
+NEXT_PUBLIC_RPC_URL=https://rpc.axionax.org
+NEXT_PUBLIC_CHAIN_ID=86137
+NEXT_PUBLIC_EXPLORER_URL=https://explorer.axionax.org
+NEXT_PUBLIC_API_URL=https://api.axionax.org
 ```
 
 Full API documentation: [docs.axionax.org/api](https://docs.axionax.org/api)
-
----
-
-## 🌐 VPS Deployment Specifications
-
-### Minimum Requirements
-
-```
-CPU:     2 vCPU cores
-RAM:     4 GB
-Storage: 50 GB SSD
-Traffic: 2 TB/month
-OS:      Ubuntu 22.04 LTS
-Cost:    ~$10-20/month
-```
-
-### Recommended for Production
-
-```
-CPU:     4 vCPU cores
-RAM:     8 GB
-Storage: 160 GB NVMe SSD
-Traffic: 4 TB/month
-OS:      Ubuntu 22.04 LTS
-Cost:    ~$40-60/month
-```
-
-### Recommended VPS Providers
-
-1. **Hetzner** (Best Value) - €9-30/month
-   - Excellent performance
-   - Competitive pricing
-   - Datacenter in Europe
-
-2. **Linode/Akamai** (Balanced) - $36-72/month
-   - Global datacenters
-   - Stable performance
-   - Great support
-
-3. **Vultr** (Best for Asia) - $48-96/month
-   - Bangkok datacenter available
-   - High-frequency compute
-   - Good for low latency in SEA
-
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed comparison.
 
 ---
 
@@ -518,7 +421,7 @@ Do not open public issues for security vulnerabilities.
 
 ---
 
-##  Links & AxionAX Protocol Ecosystem
+## 🔗 Links & Resources
 
 ### AxionAX Protocol
 
@@ -535,19 +438,18 @@ Do not open public issues for security vulnerabilities.
 
 **Main Repository**: https://github.com/axionaxprotocol/axionaxiues
 
-### Network Endpoints
+### AxionAX Network
 
-- **Website**: [axionax.org](https://axionax.org)
+- **Testnet RPC**: [rpc.axionax.org](https://rpc.axionax.org)
 - **Block Explorer**: [explorer.axionax.org](https://explorer.axionax.org)
 - **Testnet Faucet**: [faucet.axionax.org](https://faucet.axionax.org)
-- **RPC Endpoint**: [rpc.axionax.org](https://rpc.axionax.org)
+- **Documentation**: [docs.axionax.org](https://docs.axionax.org)
 
-### Development
+### Development Resources
 
-- **GitHub**: [github.com/axionaxprotocol](https://github.com/axionaxprotocol)
-- **Issues**: [Report bugs](https://github.com/axionaxprotocol/axionaxiues/issues)
+- **SDK Docs**: [docs.axionax.org/sdk](https://docs.axionax.org/sdk)
+- **API Reference**: [docs.axionax.org/api](https://docs.axionax.org/api)
 - **Contributing**: See [CONTRIBUTING.md](../axionax-docs/CONTRIBUTING.md)
-- **Issue Tracking**: Use [Issue Manager](../issue-manager) for task automation
 
 ### Community (Coming Q1 2026)
 
@@ -565,12 +467,12 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 
-## � Acknowledgments
+## 🙏 Acknowledgments
 
-- **AxionAX Protocol Team** - Core blockchain development
-- Next.js team - Amazing React framework
-- Tailwind CSS - Utility-first CSS
-- The blockchain community - Inspiration and support
+- **Next.js Team** - Amazing React framework
+- **Tailwind CSS** - Utility-first CSS framework
+- **Vercel** - Hosting and deployment platform
+- **AxionAX Community** - Feedback and support
 
 ---
 
