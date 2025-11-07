@@ -2,7 +2,7 @@
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Axionax Protocol',
+  title: 'AxionAX Protocol',
   description: 'Layer-1 blockchain for decentralized compute',
 }
 

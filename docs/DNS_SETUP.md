@@ -1,6 +1,6 @@
 # DNS Setup Guide for axionax.org
 
-Complete guide for configuring DNS records for AxionAX Protocol domains.
+Complete guide for configuring DNS records for Axionax Protocol domains.
 
 ## 📋 Table of Contents
 
@@ -737,7 +737,7 @@ chmod +x check-dns.sh
 - **MX Toolbox**: https://mxtoolbox.com
 - **SSL Labs**: https://www.ssllabs.com/ssltest/
 
-### AxionAX Protocol Docs
+### Axionax Protocol Docs
 
 - **Full Deployment Guide**: [DEPLOYMENT.md](../DEPLOYMENT.md)
 - **Docker Compose Setup**: [docker-compose.yml](../docker-compose.yml)
@@ -783,9 +783,9 @@ Use this checklist to track your DNS setup:
 
 <div align="center">
 
-**DNS Setup for AxionAX Protocol**
+**DNS Setup for Axionax Protocol**
 
-Built with ❤️ by the AxionAX Team
+Built with ❤️ by the axionax Team
 
 Last Updated: November 7, 2025
 

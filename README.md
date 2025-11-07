@@ -1,10 +1,10 @@
-﻿# AxionAX Protocol - Web Interface 🌐
+﻿# Axionax Protocol - Web Interface 🌐
 
 <div align="center">
 
-![AxionAX Logo](public/logo.svg)
+![axionax Logo](public/logo.svg)
 
-**Official Web Interface for AxionAX Blockchain Protocol**
+**Official Web Interface for axionax Blockchain Protocol**
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Next.js](https://img.shields.io/badge/Next.js-15.0-black)](https://nextjs.org/)
@@ -37,7 +37,7 @@ Recent updates:
 
 ### Home Page
 ![AxionAX Home Page](docs/screenshots/home.png)
-*Landing page showcasing AxionAX Protocol features and roadmap*
+*Landing page showcasing Axionax Protocol features and roadmap*
 
 ### Block Explorer
 ![Block Explorer](docs/screenshots/explorer.png)
@@ -55,7 +55,7 @@ Recent updates:
 
 ## About
 
-Official web interface for AxionAX Protocol - a next-generation Layer-1 blockchain for decentralized compute markets.
+Official web interface for Axionax Protocol - a next-generation Layer-1 blockchain for decentralized compute markets.
 
 **Repository**: [axionaxprotocol/axionax-web](https://github.com/axionaxprotocol/axionax-web)
 
@@ -480,7 +480,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 **Part of the AxionAX Protocol Ecosystem**
 
-Built with ❤️ by the AxionAX Team
+Built with ❤️ by the Axionax Team
 
 **Last Updated**: November 7, 2025
 
