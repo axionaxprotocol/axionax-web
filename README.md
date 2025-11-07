@@ -18,7 +18,42 @@
 
 ---
 
-## 📖 About
+## � Latest Update (November 2025)
+
+🎯 **Pre-Testnet Launch Preparation!**
+
+Recent updates:
+- ✅ Fixed Docker build issues (added package-lock.json)
+- ✅ Removed unpublished SDK dependency
+- ✅ Updated deployment documentation for Linux & Windows
+- 🔥 Enhanced DEPLOYMENT.md with platform-specific instructions
+- 📦 Ready for VPS deployment (both Linux and Windows Server)
+
+**Status**: Production-ready web interface, awaiting testnet launch Q1 2026
+
+---
+
+## 🖼️ Screenshots
+
+### Home Page
+![AxionAX Home Page](docs/screenshots/home.png)
+*Landing page showcasing AxionAX Protocol features and roadmap*
+
+### Block Explorer
+![Block Explorer](docs/screenshots/explorer.png)
+*Real-time blockchain data visualization with block and transaction search*
+
+### Testnet Faucet
+![Testnet Faucet](docs/screenshots/faucet.png)
+*Easy AXX token distribution for testnet users*
+
+### Compute Marketplace
+![Compute Marketplace](docs/screenshots/marketplace.png)
+*Browse and purchase decentralized compute resources*
+
+---
+
+## �📖 About
 
 This is the **official web interface** for the AxionAX Protocol - a
 next-generation Layer-1 blockchain designed for high-performance decentralized
@@ -28,15 +63,18 @@ compute markets.
 
 This web interface connects to the core AxionAX Protocol:
 
-- **Protocol Core**: [`../core`](../core) - Rust/Python blockchain
-  implementation
-- **SDK**: [`../sdk`](../sdk) - TypeScript SDK (used by this interface)
-- **Documentation**: [`../docs`](../docs) - Protocol documentation
-- **Deployment**: [`../deploy`](../deploy) - Infrastructure for
-  RPC/Explorer/Faucet
+- **Protocol Core**: [`../axionax-core`](../axionax-core) - Rust/Python blockchain implementation
+- **SDK**: [`../axionax-sdk-ts`](../axionax-sdk-ts) - TypeScript SDK (used by this interface)
+- **Documentation**: [`../axionax-docs`](../axionax-docs) - Protocol documentation
+- **Deployment**: [`../axionax-deploy`](../axionax-deploy) - Infrastructure for RPC/Explorer/Faucet
+- **DevTools**: [`../axionax-devtools`](../axionax-devtools) - Development & testing utilities
+- **Marketplace**: [`../axionax-marketplace`](../axionax-marketplace) - Compute marketplace dApp
+- **Issue Manager**: [`../issue-manager`](../issue-manager) - Multi-repo task tracking
 
 **Main Repository**:
 [axionaxprotocol/axionaxiues](https://github.com/axionaxprotocol/axionaxiues)
+
+**Current Status**: ✅ Ready - Production build ready, awaiting testnet launch
 
 ---
 
@@ -231,7 +269,7 @@ Services will be available at:
 - Faucet API: http://localhost:3002
 - RPC: http://localhost:8545
 
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed VPS deployment guide.
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed VPS deployment guide (supports both Linux and Windows).
 
 ### Option 2: Static Export
 
@@ -254,15 +292,19 @@ Deploy to:
 
 Complete guide for VPS deployment available in [DEPLOYMENT.md](DEPLOYMENT.md).
 
-Includes setup for:
+**Supports Both Platforms:**
+- 🐧 **Linux**: Ubuntu 20.04+, Debian 11+, CentOS 8+
+- 🪟 **Windows**: Server 2019+, Windows 10/11 Pro
 
-- Ubuntu/Debian VPS
-- Docker environment
+**Includes setup for:**
+- Docker environment (Linux/Windows)
 - Nginx reverse proxy
-- SSL certificates (Let's Encrypt)
+- SSL certificates (Let's Encrypt/win-acme)
 - Multiple subdomains
 - Database management
-- Monitoring tools
+- Firewall configuration (UFW/Windows Firewall)
+- Platform-specific monitoring tools
+- Performance tuning tips
 
 ---
 
@@ -475,22 +517,22 @@ Do not open public issues for security vulnerabilities.
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
-for details.
-
----
-
-## 🔗 Links & AxionAX Protocol Ecosystem
+##  Links & AxionAX Protocol Ecosystem
 
 ### AxionAX Protocol
 
-- **Main Repository**: https://github.com/axionaxprotocol/axionaxiues
-- **Protocol Core**: [`../core`](../core) - Blockchain implementation
-- **SDK**: [`../sdk`](../sdk) - Developer toolkit
-- **Documentation**: [`../docs`](../docs) or https://docs.axionax.org
-- **Deployment**: [`../deploy`](../deploy) - Infrastructure setup
+| Component            | Description               | Location                                         | Status     |
+| -------------------- | ------------------------- | ------------------------------------------------ | ---------- |
+| **Web** (this repo)  | Official website          | `axionax-web/`                                   | ✅ Ready   |
+| **Core**             | Blockchain implementation | [`../axionax-core`](../axionax-core)             | ✅ Ready   |
+| **SDK**              | TypeScript developer SDK  | [`../axionax-sdk-ts`](../axionax-sdk-ts)         | ✅ Ready   |
+| **Docs**             | Protocol documentation    | [`../axionax-docs`](../axionax-docs)             | 📝 Active  |
+| **Marketplace**      | Compute marketplace dApp  | [`../axionax-marketplace`](../axionax-marketplace) | 🚧 Beta  |
+| **DevTools**         | Development utilities     | [`../axionax-devtools`](../axionax-devtools)     | ✅ Ready   |
+| **Deploy**           | Infrastructure            | [`../axionax-deploy`](../axionax-deploy)         | 🔥 Testing |
+| **Issue Manager**    | Task automation           | [`../issue-manager`](../issue-manager)           | 🎉 New!    |
+
+**Main Repository**: https://github.com/axionaxprotocol/axionaxiues
 
 ### Network Endpoints
 
@@ -502,9 +544,9 @@ for details.
 ### Development
 
 - **GitHub**: [github.com/axionaxprotocol](https://github.com/axionaxprotocol)
-- **Issues**:
-  [Report bugs](https://github.com/axionaxprotocol/axionaxiues/issues)
-- **Contributing**: See [`../docs/CONTRIBUTING.md`](../docs/CONTRIBUTING.md)
+- **Issues**: [Report bugs](https://github.com/axionaxprotocol/axionaxiues/issues)
+- **Contributing**: See [CONTRIBUTING.md](../axionax-docs/CONTRIBUTING.md)
+- **Issue Tracking**: Use [Issue Manager](../issue-manager) for task automation
 
 ### Community (Coming Q1 2026)
 
@@ -514,13 +556,11 @@ for details.
 
 ---
 
-## � License
+## 📄 License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE)
-file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
-**Note**: The AxionAX Protocol Core uses AGPLv3. See
-[`../core/LICENSE`](../core/LICENSE).
+**Note**: The AxionAX Protocol Core uses AGPLv3. See [`../axionax-core/LICENSE`](../axionax-core/LICENSE).
 
 ---
 
@@ -539,6 +579,6 @@ file for details.
 
 Built with ❤️ by the AxionAX Team
 
-**Last Updated**: November 6, 2025
+**Last Updated**: November 7, 2025
 
 </div>
