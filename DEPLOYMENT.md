@@ -24,8 +24,33 @@ This guide will help you deploy the entire AxionAX infrastructure on a VPS (Linu
 - **OS**: 
   - Linux: Ubuntu 20.04+, Debian 11+, CentOS 8+
   - Windows: Server 2019+, Windows 10/11 Pro
-- **Domain**: Domain name pointing to your VPS IP
+- **Domain**: Domain name pointing to your VPS IP (see [DNS Setup Guide](docs/DNS_SETUP.md))
 - **Ports**: 80, 443 available
+
+### Domain & DNS Setup
+
+**Before deployment, configure your domain DNS:**
+
+See detailed guide: [docs/DNS_SETUP.md](docs/DNS_SETUP.md)
+
+**Quick DNS Setup:**
+1. Get your VPS IP: `curl ifconfig.me` (Linux) or `Invoke-RestMethod https://ipinfo.io/ip` (Windows)
+2. Add DNS A records for:
+   - `axionax.org` → YOUR_VPS_IP
+   - `www.axionax.org` → YOUR_VPS_IP
+   - `rpc.axionax.org` → YOUR_VPS_IP
+   - `explorer.axionax.org` → YOUR_VPS_IP
+   - `faucet.axionax.org` → YOUR_VPS_IP
+   - `api.axionax.org` → YOUR_VPS_IP
+3. Add CNAME record for docs: `docs.axionax.org` → `axionaxprotocol.github.io`
+4. Wait 5-30 minutes for DNS propagation
+
+**Verify DNS:**
+```bash
+# Check if DNS is working
+dig axionax.org +short
+nslookup rpc.axionax.org
+```
 
 ### Software Requirements:
 - Docker Desktop (Windows) or Docker Engine (Linux)

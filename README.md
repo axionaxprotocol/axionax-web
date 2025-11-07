@@ -298,6 +298,7 @@ Complete guide for VPS deployment available in [DEPLOYMENT.md](DEPLOYMENT.md).
 
 **Includes setup for:**
 - Docker environment (Linux/Windows)
+- **DNS Configuration** - See [DNS Setup Guide](docs/DNS_SETUP.md)
 - Nginx reverse proxy
 - SSL certificates (Let's Encrypt/win-acme)
 - Multiple subdomains
