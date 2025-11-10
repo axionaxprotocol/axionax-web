@@ -76,20 +76,19 @@ This is the **official web interface** for the AxionAX Protocol - a
 next-generation Layer-1 blockchain designed for high-performance decentralized
 compute markets.
 
-### Part of AxionAX Ecosystem
+### Part of axionax Ecosystem
 
-This web interface connects to the core AxionAX Protocol:
+This web interface connects to the core axionax Protocol:
 
-- **Protocol Core**: [`../axionax-core`](../axionax-core) - Rust/Python blockchain implementation
-- **SDK**: [`../axionax-sdk-ts`](../axionax-sdk-ts) - TypeScript SDK (used by this interface)
-- **Documentation**: [`../axionax-docs`](../axionax-docs) - Protocol documentation
-- **Deployment**: [`../axionax-deploy`](../axionax-deploy) - Infrastructure for RPC/Explorer/Faucet
-- **DevTools**: [`../axionax-devtools`](../axionax-devtools) - Development & testing utilities
-- **Marketplace**: [`../axionax-marketplace`](../axionax-marketplace) - Compute marketplace dApp
-- **Issue Manager**: [`../issue-manager`](../issue-manager) - Multi-repo task tracking
+- **Protocol Core**: [`axionax-core`](https://github.com/axionaxprotocol/axionax-core) - Rust/Python blockchain implementation
+- **SDK**: [`axionax-sdk-ts`](https://github.com/axionaxprotocol/axionax-sdk-ts) - TypeScript SDK (used by this interface)
+- **Documentation**: [`axionax-docs`](https://github.com/axionaxprotocol/axionax-docs) - Protocol documentation
+- **Deployment**: [`axionax-deploy`](https://github.com/axionaxprotocol/axionax-deploy) - Infrastructure for RPC/Explorer/Faucet
+- **DevTools**: [`axionax-devtools`](https://github.com/axionaxprotocol/axionax-devtools) - Development & testing utilities
+- **Marketplace**: [`axionax-marketplace`](https://github.com/axionaxprotocol/axionax-marketplace) - Compute marketplace dApp
+- **Issue Manager**: [`issue-manager`](https://github.com/axionaxprotocol/issue-manager) - Multi-repo task tracking
 
-**Main Repository**:
-[axionaxprotocol/axionaxiues](https://github.com/axionaxprotocol/axionaxiues)
+**GitHub Organization**: https://github.com/axionaxprotocol
 
 **Current Status**: ✅ Ready - Production build ready, awaiting testnet launch
 
@@ -436,9 +435,9 @@ Do not open public issues for security vulnerabilities.
 | **Deploy**           | Infrastructure            | [`../axionax-deploy`](../axionax-deploy)         | 🔥 Testing |
 | **Issue Manager**    | Task automation           | [`../issue-manager`](../issue-manager)           | 🎉 New!    |
 
-**Main Repository**: https://github.com/axionaxprotocol/axionaxiues
+**GitHub Organization**: https://github.com/axionaxprotocol
 
-### AxionAX Network
+### axionax Network
 
 - **Testnet RPC**: [rpc.axionax.org](https://rpc.axionax.org)
 - **Block Explorer**: [explorer.axionax.org](https://explorer.axionax.org)
