@@ -104,8 +104,8 @@ export default function Docs() {
             <p className="text-white/80 mb-4">
               Comprehensive SDK for TypeScript, Python, and Rust
             </p>
-            <a 
-              href="https://github.com/axionaxprotocol/axionax-sdk-ts" 
+            <a
+              href="https://github.com/axionaxprotocol/axionax-sdk-ts"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white font-semibold hover:underline"

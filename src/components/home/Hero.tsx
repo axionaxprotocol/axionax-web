@@ -30,8 +30,8 @@ export default function Hero() {
 
           {/* Description */}
           <p className="text-xl md:text-2xl text-dark-300 mb-10 max-w-3xl mx-auto animate-fade-in-up animation-delay-400">
-            axionax protocol combines <span className="text-primary-400 font-semibold">Proof of Probabilistic Checking</span> (PoPC) 
-            with <span className="text-secondary-400 font-semibold">AI-powered validation</span>, 
+            axionax protocol combines <span className="text-primary-400 font-semibold">Proof of Probabilistic Checking</span> (PoPC)
+            with <span className="text-secondary-400 font-semibold">AI-powered validation</span>,
             delivering 45,000+ TPS with sub-second finality for compute-intensive workloads.
           </p>
 

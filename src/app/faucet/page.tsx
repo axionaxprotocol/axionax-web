@@ -71,7 +71,7 @@ export default function Faucet() {
 
                 {message && (
                   <div className={`p-4 rounded-lg ${
-                    message.includes('✅') 
+                    message.includes('✅')
                       ? 'bg-green-500/10 border border-green-500/20 text-green-400'
                       : 'bg-yellow-500/10 border border-yellow-500/20 text-yellow-400'
                   }`}>
