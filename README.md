@@ -1,4 +1,4 @@
-﻿# Axionax Protocol - Web Interface 🌐
+﻿# axionax Protocol - Web Interface 🌐
 
 <div align="center">
 
@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Next.js](https://img.shields.io/badge/Next.js-15.0-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
-[![Protocol](https://img.shields.io/badge/Protocol-AxionAX-purple)](https://axionax.org)
+[![Protocol](https://img.shields.io/badge/Protocol-axionax-purple)](https://axionax.org)
 
 [Website](https://axionax.org) • [Documentation](https://docs.axionax.org) •
 [Explorer](https://explorer.axionax.org) • [Faucet](https://faucet.axionax.org)
@@ -36,8 +36,8 @@ Recent updates:
 ## 🖼️ Screenshots
 
 ### Home Page
-![AxionAX Home Page](docs/screenshots/home.png)
-*Landing page showcasing Axionax Protocol features and roadmap*
+![axionax Home Page](docs/screenshots/home.png)
+*Landing page showcasing axionax Protocol features and roadmap*
 
 ### Block Explorer
 ![Block Explorer](docs/screenshots/explorer.png)
@@ -55,7 +55,7 @@ Recent updates:
 
 ## About
 
-Official web interface for Axionax Protocol - a next-generation Layer-1 blockchain for decentralized compute markets.
+Official web interface for axionax Protocol - a next-generation Layer-1 blockchain for decentralized compute markets.
 
 **Repository**: [axionaxprotocol/axionax-web](https://github.com/axionaxprotocol/axionax-web)
 
@@ -70,9 +70,9 @@ Official web interface for Axionax Protocol - a next-generation Layer-1 blockcha
 
 ---
 
-## �📖 About
+## 📖 About
 
-This is the **official web interface** for the AxionAX Protocol - a
+This is the **official web interface** for the axionax Protocol - a
 next-generation Layer-1 blockchain designed for high-performance decentralized
 compute markets.
 
