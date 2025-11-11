@@ -39,7 +39,7 @@ export default function Footer() {
               <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center font-bold text-white">
                 AX
               </div>
-              <span className="text-xl font-bold gradient-text">AxionAX</span>
+              <span className="text-xl font-bold gradient-text">axionax</span>
             </Link>
             <p className="text-dark-400 text-sm">
               High-performance Layer-1 blockchain for decentralized compute and AI workloads.
@@ -122,7 +122,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-dark-800 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-dark-500 text-sm">
-            © {new Date().getFullYear()} AxionAX Protocol. All rights reserved.
+            © {new Date().getFullYear()} axionax Protocol. All rights reserved.
           </p>
           <div className="flex space-x-6">
             <a

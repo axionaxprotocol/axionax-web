@@ -12,7 +12,7 @@ export default function Explorer() {
         <div className="mb-8">
           <h1 className="text-4xl font-bold gradient-text mb-4">Block Explorer</h1>
           <p className="text-dark-400 text-lg">
-            Explore blocks, transactions, and addresses on the AxionAX testnet
+            Explore blocks, transactions, and addresses on the axionax testnet
           </p>
         </div>
 

@@ -78,10 +78,10 @@ export default function Technology() {
         <div className="mt-16 card-hover">
           <h3 className="text-xl font-bold text-white mb-4">Quick Start Example</h3>
           <pre className="code-block">
-            <code className="text-green-400">{`// Initialize AxionAX SDK
-import { AxionAX, Wallet } from '@axionax/sdk';
+            <code className="text-green-400">{`// Initialize axionax SDK
+import { axionax, Wallet } from '@axionax/sdk';
 
-const axion = new AxionAX({
+const axion = new axionax({
   rpcUrl: 'https://rpc.axionax.org',
   networkId: 'testnet-v1',
 });

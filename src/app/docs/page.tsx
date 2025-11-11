@@ -50,7 +50,7 @@ export default function Docs() {
         <div className="mb-8">
           <h1 className="text-4xl font-bold gradient-text mb-4">Documentation</h1>
           <p className="text-dark-400 text-lg">
-            Everything you need to build on AxionAX
+            Everything you need to build on axionax
           </p>
         </div>
 
@@ -87,7 +87,7 @@ export default function Docs() {
             </div>
             <h3 className="text-xl font-bold mb-2">Quick Start</h3>
             <p className="text-white/80 mb-4">
-              Get started with AxionAX in under 5 minutes
+              Get started with axionax in under 5 minutes
             </p>
             <Link href="#quickstart" className="text-white font-semibold hover:underline">
               Start Building →
@@ -143,9 +143,9 @@ export default function Docs() {
 
               <h3 className="text-xl font-semibold mb-4">2. Connect to Testnet</h3>
               <div className="code-block mb-6">
-                <pre>{`import { AxionAXClient } from '@axionax/sdk';
+                <pre>{`import { axionaxClient } from '@axionax/sdk';
 
-const client = new AxionAXClient({
+const client = new axionaxClient({
   network: 'testnet',
   endpoint: 'https://rpc.testnet.axionax.io'
 });

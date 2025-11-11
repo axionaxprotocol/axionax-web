@@ -103,7 +103,7 @@ export default function Faucet() {
                 <div className="flex items-start gap-3">
                   <div className="text-primary-500 mt-1">•</div>
                   <div>
-                    <strong className="text-white">Network:</strong> AxionAX Testnet
+                    <strong className="text-white">Network:</strong> axionax Testnet
                   </div>
                 </div>
                 <div className="flex items-start gap-3">

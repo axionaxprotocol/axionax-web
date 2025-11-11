@@ -71,7 +71,7 @@ export default function Statistics() {
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="gradient-text mb-4">Network Statistics</h2>
-          <p className="text-dark-400 text-lg">Real-time metrics from the AxionAX network</p>
+          <p className="text-dark-400 text-lg">Real-time metrics from the axionax network</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -32,7 +32,7 @@ export default function Features() {
     },
     {
       title: 'Low Transaction Costs',
-      description: 'Average transaction fees under $0.001 make AxionAX accessible for developers and users alike. No more worrying about gas wars or unpredictable costs.',
+      description: 'Average transaction fees under $0.001 make axionax accessible for developers and users alike. No more worrying about gas wars or unpredictable costs.',
       icon: (
         <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -63,7 +63,7 @@ export default function Features() {
     <section className="section">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="gradient-text mb-4">Why Choose AxionAX?</h2>
+          <h2 className="gradient-text mb-4">Why Choose axionax?</h2>
           <p className="text-dark-400 text-lg max-w-2xl mx-auto">
             Built from the ground up to solve real-world problems with cutting-edge technology
           </p>
