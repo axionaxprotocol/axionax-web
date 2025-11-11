@@ -17,19 +17,19 @@ export default function Button({
   disabled,
   ...props
 }: ButtonProps) {
-  const baseClasses = 'btn inline-flex items-center justify-center gap-2 font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed';
+  const baseClasses = 'btn inline-flex items-center justify-center gap-2 font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95';
   
   const variantClasses = {
-    primary: 'btn-primary',
-    secondary: 'btn-secondary',
-    outline: 'btn-outline',
-    ghost: 'hover:bg-dark-800 text-dark-100',
+    primary: 'btn-primary hover:shadow-xl hover:shadow-primary-500/40 active:shadow-lg',
+    secondary: 'btn-secondary hover:shadow-lg',
+    outline: 'btn-outline hover:shadow-lg hover:shadow-primary-500/20',
+    ghost: 'hover:bg-dark-800 text-dark-100 hover:text-white',
   };
   
   const sizeClasses = {
-    sm: 'px-4 py-2 text-sm',
-    md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-lg',
+    sm: 'px-4 py-2 text-sm rounded-lg',
+    md: 'px-6 py-3 text-base rounded-lg',
+    lg: 'px-8 py-4 text-lg rounded-xl',
   };
 
   return (

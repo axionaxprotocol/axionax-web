@@ -28,9 +28,9 @@ export default function Hero() {
           </h1>
 
           {/* Description */}
-          <p className="text-xl md:text-2xl text-dark-300 mb-10 max-w-3xl mx-auto animate-fade-in-up animation-delay-400">
-            AxionAX is powered by <span className="text-primary-400 font-semibold">Proof of Positive Contribution</span> (PoPC) consensus,
-            enabling decentralized computing and AI workloads with unprecedented efficiency.
+          <p className="text-xl md:text-2xl text-dark-300 mb-10 max-w-3xl mx-auto animate-fade-in-up animation-delay-400 leading-relaxed">
+            axionax is powered by <span className="text-primary-400 font-semibold">Proof of Positive Contribution</span> (PoPC) consensus,
+            enabling <span className="text-secondary-400 font-medium">decentralized computing</span> and <span className="text-secondary-400 font-medium">AI workloads</span> with unprecedented efficiency.
           </p>
 
           {/* CTA Buttons */}
@@ -53,21 +53,21 @@ export default function Hero() {
 
           {/* Quick Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto animate-fade-in-up animation-delay-800">
-            <div className="text-center">
-              <div className="text-3xl font-bold gradient-text mb-1">1000+</div>
-              <div className="text-sm text-dark-400">TPS</div>
+            <div className="group text-center p-4 rounded-xl bg-dark-900/50 border border-dark-800 hover:border-primary-500/50 hover:bg-dark-900 transition-all duration-300 cursor-default">
+              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2 group-hover:scale-110 transition-transform">45K+</div>
+              <div className="text-sm text-dark-400 group-hover:text-dark-300 transition-colors">TPS</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold gradient-text mb-1">&lt;2s</div>
-              <div className="text-sm text-dark-400">Finality</div>
+            <div className="group text-center p-4 rounded-xl bg-dark-900/50 border border-dark-800 hover:border-secondary-500/50 hover:bg-dark-900 transition-all duration-300 cursor-default">
+              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2 group-hover:scale-110 transition-transform">&lt;0.5s</div>
+              <div className="text-sm text-dark-400 group-hover:text-dark-300 transition-colors">Finality</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold gradient-text mb-1">99.9%</div>
-              <div className="text-sm text-dark-400">Uptime</div>
+            <div className="group text-center p-4 rounded-xl bg-dark-900/50 border border-dark-800 hover:border-primary-500/50 hover:bg-dark-900 transition-all duration-300 cursor-default">
+              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2 group-hover:scale-110 transition-transform">99.9%</div>
+              <div className="text-sm text-dark-400 group-hover:text-dark-300 transition-colors">Uptime</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold gradient-text mb-1">$0.001</div>
-              <div className="text-sm text-dark-400">Avg Fee</div>
+            <div className="group text-center p-4 rounded-xl bg-dark-900/50 border border-dark-800 hover:border-secondary-500/50 hover:bg-dark-900 transition-all duration-300 cursor-default">
+              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2 group-hover:scale-110 transition-transform">$0.0001</div>
+              <div className="text-sm text-dark-400 group-hover:text-dark-300 transition-colors">Avg Fee</div>
             </div>
           </div>
         </div>

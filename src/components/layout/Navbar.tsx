@@ -20,11 +20,11 @@ export default function Navbar() {
       <div className="container-custom">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center font-bold text-white">
+          <Link href="/" className="flex items-center space-x-2 group">
+            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center font-bold text-white group-hover:scale-110 transition-transform duration-300">
               AX
             </div>
-            <span className="text-xl font-bold gradient-text">AxionAX</span>
+            <span className="text-xl font-bold gradient-text group-hover:opacity-80 transition-opacity">axionax</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -33,11 +33,12 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-dark-300 hover:text-white transition-colors"
+                className="relative text-dark-300 hover:text-white transition-all duration-300 group"
                 target={item.href.startsWith('http') ? '_blank' : undefined}
                 rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
               >
                 {item.name}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300" />
               </Link>
             ))}
           </div>
