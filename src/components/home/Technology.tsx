@@ -93,7 +93,7 @@ const wallet = Wallet.fromMnemonic('your mnemonic here');
 const tx = await axion.sendTransaction({
   from: wallet.address,
   to: '0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb',
-  value: '1000000000000000000', // 1 AXN
+  value: '1000000000000000000', // 1 AXX
   data: '0x',
 });
 

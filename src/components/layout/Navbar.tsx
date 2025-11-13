@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Button from '@/components/ui/Button';
+import ConnectButton from '@/components/wallet/ConnectButton';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,9 +45,7 @@ export default function Navbar() {
 
           {/* Connect Wallet Button */}
           <div className="hidden md:block">
-            <Button variant="primary" size="sm">
-              Connect Wallet
-            </Button>
+            <ConnectButton />
           </div>
 
           {/* Mobile menu button */}
@@ -91,9 +89,7 @@ export default function Navbar() {
                 </Link>
               ))}
               <div className="px-4">
-                <Button variant="primary" size="sm" className="w-full">
-                  Connect Wallet
-                </Button>
+                <ConnectButton />
               </div>
             </div>
           </div>
