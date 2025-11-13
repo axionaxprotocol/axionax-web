@@ -18,18 +18,51 @@
 
 ---
 
-## � Latest Update (November 2025)
+## 📢 Latest Update (November 13, 2025)
 
-🎯 **Pre-Testnet Launch Preparation!**
+🎯 **Testnet Infrastructure Deployment - 78% Complete!**
 
 Recent updates:
-- ✅ Fixed Docker build issues (added package-lock.json)
-- ✅ Removed unpublished SDK dependency
-- ✅ Updated deployment documentation for Linux & Windows
-- 🔥 Enhanced DEPLOYMENT.md with platform-specific instructions
-- 📦 Ready for VPS deployment (both Linux and Windows Server)
+- ✅ VPS deployment active on vmi2895217 (217.216.109.5)
+- ✅ Infrastructure layer 100% operational (PostgreSQL, Redis, Nginx, SSL)
+- ✅ Monitoring stack deployed (Grafana v12.2.1 + Prometheus)
+- ✅ Mock RPC node operational (JSON-RPC 2.0, HTTP + WebSocket)
+- ✅ Web interface running on port 3000 (23h+ uptime)
+- 🔧 Explorer/Faucet APIs troubleshooting in progress
+- 📊 Current status: 7/9 services healthy
 
-**Status**: Production-ready web interface, awaiting testnet launch Q1 2026
+**Deployment Progress**:
+- Infrastructure: 5/5 services ✅
+- Monitoring: 2/2 services ✅
+- Applications: 0/2 services (under investigation)
+
+**Next Steps**: Complete API service debugging, full axionax-core build, testnet launch preparation
+
+---
+
+## 🏗️ Current Infrastructure
+
+### Production VPS (vmi2895217)
+
+**Active Services**:
+- **PostgreSQL** (5432): Database layer - 44h uptime
+- **Redis** (6379): Cache layer - 44h uptime
+- **Nginx** (80/443): Web server with SSL - 44h uptime
+- **RPC Node** (8545/8546): Mock JSON-RPC server - 18h uptime
+- **Grafana** (3030): Monitoring dashboards v12.2.1 - 15h uptime
+- **Prometheus** (9090): Metrics collection - 15h uptime
+- **Web Interface** (3000): axionax-web frontend - 23h uptime
+
+**Under Maintenance**:
+- Explorer API (3001): Container running, service debugging
+- Faucet API (3002): Container running, service debugging
+
+**System Specifications**:
+- RAM: 7.8GB (12% utilized)
+- CPU: 4 cores (low load)
+- Disk: 61GB free space
+- Network: Docker bridge configured
+- Containers: 9 deployed, 7 operational
 
 ---
 
@@ -90,7 +123,34 @@ This web interface connects to the core axionax Protocol:
 
 **GitHub Organization**: https://github.com/axionaxprotocol
 
-**Current Status**: ✅ Ready - Production build ready, awaiting testnet launch
+**Current Status**: ✅ Deployed - 7/9 services running on VPS, frontend operational, API debugging in progress
+
+---
+
+## 🚀 Infrastructure Status
+
+### Live Testnet Services (VPS vmi2895217)
+
+| Service | Endpoint | Status | Uptime | Notes |
+|---------|----------|--------|--------|-------|
+| **Web Interface** | http://217.216.109.5:3000 | ✅ Running | 23h+ | axionax-web frontend |
+| **RPC Node** | http://217.216.109.5:8545 | ✅ Healthy | 18h+ | Mock JSON-RPC 2.0 |
+| **WebSocket RPC** | ws://217.216.109.5:8546 | ✅ Healthy | 18h+ | Real-time blockchain |
+| **Grafana** | http://217.216.109.5:3030 | ✅ Healthy | 15h+ | Monitoring v12.2.1 |
+| **Prometheus** | http://217.216.109.5:9090 | ✅ Running | 15h+ | Metrics collection |
+| **PostgreSQL** | localhost:5432 | ✅ Healthy | 44h+ | Database layer |
+| **Redis** | localhost:6379 | ✅ Healthy | 44h+ | Cache layer |
+| **Explorer API** | http://217.216.109.5:3001 | 🔧 Debugging | - | Under investigation |
+| **Faucet API** | http://217.216.109.5:3002 | 🔧 Debugging | - | Under investigation |
+
+**Overall Health**: 7/9 services operational (78%)
+
+### System Resources
+- **VPS**: 7.8GB RAM, 4 CPU cores, 61GB disk free
+- **RAM Usage**: ~12% (excellent)
+- **CPU Load**: Low (optimal)
+- **Network**: Docker bridge configured
+- **SSL**: Configured on Nginx (ports 80/443)
 
 ---
 
@@ -439,10 +499,13 @@ Do not open public issues for security vulnerabilities.
 
 ### axionax Network
 
-- **Testnet RPC**: [rpc.axionax.org](https://rpc.axionax.org)
-- **Block Explorer**: [explorer.axionax.org](https://explorer.axionax.org)
-- **Testnet Faucet**: [faucet.axionax.org](https://faucet.axionax.org)
+- **Website**: [axionax.org](https://axionax.org) 🔜 Coming Soon
+- **Testnet RPC**: rpc.axionax.org (Mock JSON-RPC operational on VPS)
+- **Block Explorer**: explorer.axionax.org (API under development)
+- **Testnet Faucet**: faucet.axionax.org (API under development)
 - **Documentation**: [docs.axionax.org](https://docs.axionax.org)
+
+**Current Deployment**: VPS vmi2895217 (217.216.109.5) - 7/9 services operational
 
 ### Development Resources
 
@@ -481,6 +544,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 Built with ❤️ by the Axionax Team
 
-**Last Updated**: November 7, 2025
+**Last Updated**: November 13, 2025 - Testnet Infrastructure 78% Deployed
 
 </div>
