@@ -17,7 +17,7 @@ export default function Docs() {
     {
       title: 'Core Concepts',
       items: [
-        { name: 'Proof of Positive Contribution', href: '#popc' },
+        { name: 'Proof of Probabilistic Checking', href: '#popc' },
         { name: 'Validators', href: '#validators' },
         { name: 'Transactions', href: '#transactions' },
         { name: 'Smart Contracts', href: '#contracts' },
