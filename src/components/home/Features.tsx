@@ -14,7 +14,7 @@ export default function Features() {
     },
     {
       title: 'High Performance',
-      description: 'Process over 1,000 transactions per second with sub-2-second finality. Built for real-world applications that demand speed and reliability.',
+      description: 'Current testnet: 1,000+ TPS with sub-2-second finality. Mainnet target: 45K+ TPS with <0.5s finality. Built for real-world applications that demand speed and reliability.',
       icon: (
         <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />

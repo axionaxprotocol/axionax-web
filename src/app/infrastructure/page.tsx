@@ -80,7 +80,7 @@ export default function InfrastructurePage() {
               </div>
               <div>
                 <div className="text-dark-400 text-sm mb-1">Network</div>
-                <div className="text-dark-100">axionax-testnet-1 (Chain ID: 888)</div>
+                <div className="text-dark-100">axionax-testnet-1 (Chain ID: 86137)</div>
               </div>
             </div>
           </div>
