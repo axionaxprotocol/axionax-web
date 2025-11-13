@@ -15,8 +15,8 @@ export default function Hero() {
           {/* Badge */}
           <div className="mb-8 animate-fade-in-up">
             <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full text-primary-400 text-sm font-medium">
-              <span className="w-2 h-2 bg-primary-500 rounded-full animate-pulse" />
-              Public Testnet Now Live
+              <span className="w-2 h-2 bg-amber-500 rounded-full animate-pulse" />
+              Testnet 78% Deployed • 7/9 Services Live
             </span>
           </div>
 
@@ -54,20 +54,20 @@ export default function Hero() {
           {/* Quick Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto animate-fade-in-up animation-delay-800">
             <div className="group text-center p-4 rounded-xl bg-dark-900/50 border border-dark-800 hover:border-primary-500/50 hover:bg-dark-900 transition-all duration-300 cursor-default">
-              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2 group-hover:scale-110 transition-transform">45K+</div>
-              <div className="text-sm text-dark-400 group-hover:text-dark-300 transition-colors">TPS</div>
+              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2 group-hover:scale-110 transition-transform">888</div>
+              <div className="text-sm text-dark-400 group-hover:text-dark-300 transition-colors">Chain ID</div>
             </div>
             <div className="group text-center p-4 rounded-xl bg-dark-900/50 border border-dark-800 hover:border-secondary-500/50 hover:bg-dark-900 transition-all duration-300 cursor-default">
-              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2 group-hover:scale-110 transition-transform">&lt;0.5s</div>
-              <div className="text-sm text-dark-400 group-hover:text-dark-300 transition-colors">Finality</div>
+              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2 group-hover:scale-110 transition-transform">7/9</div>
+              <div className="text-sm text-dark-400 group-hover:text-dark-300 transition-colors">Services Live</div>
             </div>
             <div className="group text-center p-4 rounded-xl bg-dark-900/50 border border-dark-800 hover:border-primary-500/50 hover:bg-dark-900 transition-all duration-300 cursor-default">
-              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2 group-hover:scale-110 transition-transform">99.9%</div>
+              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2 group-hover:scale-110 transition-transform">44h+</div>
               <div className="text-sm text-dark-400 group-hover:text-dark-300 transition-colors">Uptime</div>
             </div>
             <div className="group text-center p-4 rounded-xl bg-dark-900/50 border border-dark-800 hover:border-secondary-500/50 hover:bg-dark-900 transition-all duration-300 cursor-default">
-              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2 group-hover:scale-110 transition-transform">$0.0001</div>
-              <div className="text-sm text-dark-400 group-hover:text-dark-300 transition-colors">Avg Fee</div>
+              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2 group-hover:scale-110 transition-transform">78%</div>
+              <div className="text-sm text-dark-400 group-hover:text-dark-300 transition-colors">Deployed</div>
             </div>
           </div>
         </div>
