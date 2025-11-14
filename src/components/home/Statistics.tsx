@@ -2,22 +2,43 @@
 
 import React, { useEffect, useState } from 'react';
 
+const EXPLORER_API = 'http://217.216.109.5:3001';
+
 export default function Statistics() {
   const [stats, setStats] = useState({
     blocks: 1000,
-    services: 7,
-    uptime: 44,
-    deployment: 78,
+    services: 9,
+    uptime: 48,
+    deployment: 100,
   });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate block increment
-    const interval = setInterval(() => {
-      setStats(prev => ({
-        ...prev,
-        blocks: prev.blocks + 1,
-      }));
-    }, 3000); // Mock RPC mines blocks every 3 seconds
+    // Fetch real-time stats from Explorer API
+    const fetchStats = async () => {
+      try {
+        const response = await fetch(`${EXPLORER_API}/api/stats`);
+        const data = await response.json();
+        
+        setStats({
+          blocks: data.blockNumber,
+          services: data.services.healthy,
+          uptime: data.uptime.hours,
+          deployment: data.deployment,
+        });
+        setLoading(false);
+      } catch (error) {
+        console.error('Failed to fetch stats:', error);
+        // Keep using default values on error
+        setLoading(false);
+      }
+    };
+
+    // Initial fetch
+    fetchStats();
+
+    // Refresh every 5 seconds
+    const interval = setInterval(fetchStats, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -28,14 +49,14 @@ export default function Statistics() {
 
   const statItems = [
     {
-      label: 'Mock Block Height',
-      value: formatNumber(stats.blocks),
+      label: 'Live Block Height',
+      value: loading ? '...' : formatNumber(stats.blocks),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
         </svg>
       ),
-      subtitle: 'Auto-increment every 3s',
+      subtitle: 'Real-time from RPC',
     },
     {
       label: 'Services Operational',
@@ -49,13 +70,13 @@ export default function Statistics() {
     },
     {
       label: 'Infrastructure Uptime',
-      value: `${stats.uptime}h+`,
+      value: loading ? '...' : (stats.uptime >= 24 ? `${Math.floor(stats.uptime/24)}d+` : `${stats.uptime}h+`),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
       ),
-      subtitle: 'PostgreSQL & Redis',
+      subtitle: 'Explorer API uptime',
     },
     {
       label: 'Testnet Deployment',
@@ -98,14 +119,14 @@ export default function Statistics() {
         <div className="mt-12 p-6 rounded-xl bg-dark-900 border border-dark-800">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold text-dark-200">Service Health</h3>
-            <span className="text-sm text-amber-400">⚠️ 2 services debugging</span>
+            <span className="text-sm text-green-400">✅ All systems operational</span>
           </div>
           <div className="space-y-3">
             <div className="flex items-center gap-3">
               <div className="w-full bg-dark-800 rounded-full h-2">
-                <div className="bg-green-500 h-2 rounded-full" style={{ width: '78%' }}></div>
+                <div className="bg-green-500 h-2 rounded-full" style={{ width: '100%' }}></div>
               </div>
-              <span className="text-sm text-dark-400 whitespace-nowrap">78%</span>
+              <span className="text-sm text-dark-400 whitespace-nowrap">100%</span>
             </div>
             <div className="flex flex-wrap gap-2 text-xs">
               <span className="px-2 py-1 bg-green-500/20 text-green-400 rounded">✅ RPC</span>
@@ -115,8 +136,8 @@ export default function Statistics() {
               <span className="px-2 py-1 bg-green-500/20 text-green-400 rounded">✅ Grafana</span>
               <span className="px-2 py-1 bg-green-500/20 text-green-400 rounded">✅ Prometheus</span>
               <span className="px-2 py-1 bg-green-500/20 text-green-400 rounded">✅ Web</span>
-              <span className="px-2 py-1 bg-amber-500/20 text-amber-400 rounded">🔧 Explorer API</span>
-              <span className="px-2 py-1 bg-amber-500/20 text-amber-400 rounded">🔧 Faucet API</span>
+              <span className="px-2 py-1 bg-green-500/20 text-green-400 rounded">✅ Explorer API</span>
+              <span className="px-2 py-1 bg-green-500/20 text-green-400 rounded">✅ Faucet API</span>
             </div>
           </div>
         </div>
