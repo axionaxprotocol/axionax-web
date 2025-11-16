@@ -190,7 +190,7 @@ $deployScript | Out-File -FilePath $tempScript -Encoding UTF8
 # Execute deployment via SSH
 try {
     Write-Host "`nExecuting deployment commands on VPS..." -ForegroundColor Cyan
-    ssh ${SSH_USER}@${VPS_IP} "bash -s" < $tempScript
+    Get-Content $tempScript | ssh ${SSH_USER}@${VPS_IP} "bash -s"
     
     if ($LASTEXITCODE -ne 0) {
         Write-Host "❌ Deployment failed with exit code: $LASTEXITCODE" -ForegroundColor Red
@@ -251,5 +251,6 @@ Write-Host "`n📝 Useful commands:" -ForegroundColor Cyan
 Write-Host "   View logs:    ssh ${SSH_USER}@${VPS_IP} 'cd ${DEPLOY_PATH} && docker-compose logs -f'" -ForegroundColor White
 Write-Host "   Restart:      ssh ${SSH_USER}@${VPS_IP} 'cd ${DEPLOY_PATH} && docker-compose restart'" -ForegroundColor White
 Write-Host "   Check status: ssh ${SSH_USER}@${VPS_IP} 'cd ${DEPLOY_PATH} && docker-compose ps'" -ForegroundColor White
-Write-Host "`n✨ Deployment completed at: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Green
+$completionTime = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
+Write-Host "`n✨ Deployment completed at: $completionTime" -ForegroundColor Green
 Write-Host ""
