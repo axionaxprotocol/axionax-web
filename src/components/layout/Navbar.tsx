@@ -24,7 +24,9 @@ export default function Navbar() {
             <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center font-bold text-white group-hover:scale-110 transition-transform duration-300">
               AX
             </div>
-            <span className="text-xl font-bold gradient-text group-hover:opacity-80 transition-opacity">axionax</span>
+            <span className="text-xl font-bold gradient-text group-hover:opacity-80 transition-opacity">
+              axionax
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -35,7 +37,11 @@ export default function Navbar() {
                 href={item.href}
                 className="relative text-dark-300 hover:text-white transition-all duration-300 group"
                 target={item.href.startsWith('http') ? '_blank' : undefined}
-                rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                rel={
+                  item.href.startsWith('http')
+                    ? 'noopener noreferrer'
+                    : undefined
+                }
               >
                 {item.name}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300" />
@@ -83,7 +89,11 @@ export default function Navbar() {
                   className="text-dark-300 hover:text-white transition-colors px-4 py-2"
                   onClick={() => setIsOpen(false)}
                   target={item.href.startsWith('http') ? '_blank' : undefined}
-                  rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  rel={
+                    item.href.startsWith('http')
+                      ? 'noopener noreferrer'
+                      : undefined
+                  }
                 >
                   {item.name}
                 </Link>

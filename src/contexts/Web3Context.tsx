@@ -1,7 +1,19 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { connectWallet, getCurrentAccount, getBalance, getCurrentChainId, AXIONAX_TESTNET } from '@/lib/web3';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from 'react';
+import {
+  connectWallet,
+  getCurrentAccount,
+  getBalance,
+  getCurrentChainId,
+  AXIONAX_TESTNET,
+} from '@/lib/web3';
 
 interface Web3ContextType {
   account: string | null;
@@ -16,7 +28,11 @@ interface Web3ContextType {
 
 const Web3Context = createContext<Web3ContextType | undefined>(undefined);
 
-export function Web3Provider({ children }: { children: React.ReactNode }) {
+export function Web3Provider({
+  children,
+}: {
+  children: React.ReactNode;
+}): React.JSX.Element {
   const [account, setAccount] = useState<string | null>(null);
   const [balance, setBalance] = useState<string>('0');
   const [chainId, setChainId] = useState<string | null>(null);
@@ -41,7 +57,7 @@ export function Web3Provider({ children }: { children: React.ReactNode }) {
       if (accounts.length > 0) {
         setAccount(accounts[0]);
         await loadAccountData(accounts[0]);
-        
+
         const currentChainId = await getCurrentChainId();
         setChainId(currentChainId);
       }
@@ -69,44 +85,64 @@ export function Web3Provider({ children }: { children: React.ReactNode }) {
       if (currentAccount) {
         setAccount(currentAccount);
         await loadAccountData(currentAccount);
-        
+
         const currentChainId = await getCurrentChainId();
         setChainId(currentChainId);
       }
     };
 
-    checkConnection();
+    void checkConnection();
   }, [loadAccountData]);
 
   // Listen for account changes
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const { ethereum } = window as unknown as { ethereum?: { on?: (event: string, handler: (...args: unknown[]) => void) => void; removeListener?: (event: string, handler: (...args: unknown[]) => void) => void } };
+    const { ethereum } = window as unknown as {
+      ethereum?: {
+        on?: (event: string, handler: (...args: unknown[]) => void) => void;
+        removeListener?: (
+          event: string,
+          handler: (...args: unknown[]) => void
+        ) => void;
+      };
+    };
     if (!ethereum) return;
 
-    const handleAccountsChanged = (accounts: string[]) => {
+    const handleAccountsChanged = (accounts: string[]): void => {
       if (accounts.length === 0) {
         disconnect();
       } else if (accounts[0] !== account) {
         setAccount(accounts[0]);
-        loadAccountData(accounts[0]);
+        void loadAccountData(accounts[0]);
       }
     };
 
-    const handleChainChanged = (newChainId: string) => {
+    const handleChainChanged = (newChainId: string): void => {
       setChainId(newChainId);
       // Reload balance when chain changes
       if (account) {
-        loadAccountData(account);
+        void loadAccountData(account);
       }
     };
 
-    ethereum.on?.('accountsChanged', handleAccountsChanged as (...args: unknown[]) => void);
-    ethereum.on?.('chainChanged', handleChainChanged as (...args: unknown[]) => void);
+    ethereum.on?.(
+      'accountsChanged',
+      handleAccountsChanged as (...args: unknown[]) => void
+    );
+    ethereum.on?.(
+      'chainChanged',
+      handleChainChanged as (...args: unknown[]) => void
+    );
 
     return () => {
-      ethereum.removeListener?.('accountsChanged', handleAccountsChanged as (...args: unknown[]) => void);
-      ethereum.removeListener?.('chainChanged', handleChainChanged as (...args: unknown[]) => void);
+      ethereum.removeListener?.(
+        'accountsChanged',
+        handleAccountsChanged as (...args: unknown[]) => void
+      );
+      ethereum.removeListener?.(
+        'chainChanged',
+        handleChainChanged as (...args: unknown[]) => void
+      );
     };
   }, [account, disconnect, loadAccountData]);
 
@@ -128,7 +164,7 @@ export function Web3Provider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function useWeb3() {
+export function useWeb3(): Web3ContextType {
   const context = useContext(Web3Context);
   if (context === undefined) {
     throw new Error('useWeb3 must be used within a Web3Provider');

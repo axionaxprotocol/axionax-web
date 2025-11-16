@@ -7,9 +7,17 @@ interface CardProps {
   style?: React.CSSProperties;
 }
 
-export default function Card({ children, className = '', hover = false, style }: CardProps) {
+export default function Card({
+  children,
+  className = '',
+  hover = false,
+  style,
+}: CardProps) {
   return (
-    <div className={`${hover ? 'card-hover' : 'card'} ${className}`} style={style}>
+    <div
+      className={`${hover ? 'card-hover' : 'card'} ${className}`}
+      style={style}
+    >
       {children}
     </div>
   );

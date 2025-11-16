@@ -8,7 +8,11 @@ interface BadgeProps {
   className?: string;
 }
 
-export default function Badge({ children, variant = 'default', className = '' }: BadgeProps) {
+export default function Badge({
+  children,
+  variant = 'default',
+  className = '',
+}: BadgeProps) {
   const variantClasses = {
     success: 'badge-success',
     warning: 'badge-warning',

@@ -10,7 +10,9 @@ export default function Explorer() {
       <Navbar />
       <main className="container-custom py-16">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold gradient-text mb-4">Block Explorer</h1>
+          <h1 className="text-4xl font-bold gradient-text mb-4">
+            Block Explorer
+          </h1>
           <p className="text-dark-400 text-lg">
             Explore blocks, transactions, and addresses on the axionax testnet
           </p>
@@ -29,7 +31,9 @@ export default function Explorer() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-primary-400">Total Transactions</CardTitle>
+              <CardTitle className="text-primary-400">
+                Total Transactions
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold mb-2">5,678,901</div>
@@ -39,7 +43,9 @@ export default function Explorer() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-primary-400">Active Validators</CardTitle>
+              <CardTitle className="text-primary-400">
+                Active Validators
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold mb-2">127</div>
@@ -60,7 +66,9 @@ export default function Explorer() {
                   className="flex items-center justify-between p-4 bg-dark-900 rounded-lg border border-dark-800 hover:border-primary-500/50 transition-colors"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="text-primary-400 font-mono">#{1234567 - i}</div>
+                    <div className="text-primary-400 font-mono">
+                      #{1234567 - i}
+                    </div>
                     <div className="text-dark-400 text-sm">
                       {i * 2} seconds ago
                     </div>
@@ -68,11 +76,15 @@ export default function Explorer() {
                   <div className="flex items-center gap-4">
                     <div className="text-sm">
                       <span className="text-dark-500">Txs:</span>{' '}
-                      <span className="text-white">{Math.floor(Math.random() * 50) + 10}</span>
+                      <span className="text-white">
+                        {Math.floor(Math.random() * 50) + 10}
+                      </span>
                     </div>
                     <div className="text-sm">
                       <span className="text-dark-500">Size:</span>{' '}
-                      <span className="text-white">{Math.floor(Math.random() * 100) + 50} KB</span>
+                      <span className="text-white">
+                        {Math.floor(Math.random() * 100) + 50} KB
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -83,7 +95,8 @@ export default function Explorer() {
 
         <div className="mt-8 text-center">
           <p className="text-dark-500 text-sm">
-            Full explorer functionality coming soon. This is a preview interface.
+            Full explorer functionality coming soon. This is a preview
+            interface.
           </p>
         </div>
       </main>

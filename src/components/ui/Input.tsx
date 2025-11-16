@@ -5,7 +5,12 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string;
 }
 
-export default function Input({ label, error, className = '', ...props }: InputProps) {
+export default function Input({
+  label,
+  error,
+  className = '',
+  ...props
+}: InputProps) {
   return (
     <div className="w-full">
       {label && (
@@ -17,9 +22,7 @@ export default function Input({ label, error, className = '', ...props }: InputP
         className={`input ${error ? 'border-red-500' : ''} ${className}`}
         {...props}
       />
-      {error && (
-        <p className="mt-2 text-sm text-red-400">{error}</p>
-      )}
+      {error && <p className="mt-2 text-sm text-red-400">{error}</p>}
     </div>
   );
 }

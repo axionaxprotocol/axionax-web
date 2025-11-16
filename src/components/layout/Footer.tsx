@@ -12,7 +12,10 @@ export default function Footer() {
     developers: [
       { name: 'Documentation', href: '/docs' },
       { name: 'API Reference', href: '/docs/api' },
-      { name: 'SDK', href: 'https://github.com/axionaxprotocol/axionax-sdk-ts' },
+      {
+        name: 'SDK',
+        href: 'https://github.com/axionaxprotocol/axionax-sdk-ts',
+      },
       { name: 'GitHub', href: 'https://github.com/axionaxprotocol' },
     ],
     community: [
@@ -42,7 +45,8 @@ export default function Footer() {
               <span className="text-xl font-bold gradient-text">axionax</span>
             </Link>
             <p className="text-dark-400 text-sm">
-              High-performance Layer-1 blockchain for decentralized compute and AI workloads.
+              High-performance Layer-1 blockchain for decentralized compute and
+              AI workloads.
             </p>
           </div>
 
@@ -73,7 +77,11 @@ export default function Footer() {
                     href={link.href}
                     className="text-dark-400 hover:text-white transition-colors text-sm"
                     target={link.href.startsWith('http') ? '_blank' : undefined}
-                    rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    rel={
+                      link.href.startsWith('http')
+                        ? 'noopener noreferrer'
+                        : undefined
+                    }
                   >
                     {link.name}
                   </Link>
@@ -92,7 +100,11 @@ export default function Footer() {
                     href={link.href}
                     className="text-dark-400 hover:text-white transition-colors text-sm"
                     target={link.href.startsWith('http') ? '_blank' : undefined}
-                    rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    rel={
+                      link.href.startsWith('http')
+                        ? 'noopener noreferrer'
+                        : undefined
+                    }
                   >
                     {link.name}
                   </Link>

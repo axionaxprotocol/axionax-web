@@ -20,23 +20,34 @@ export interface MetaMaskError extends Error {
 // Check if MetaMask is installed
 export const isMetaMaskInstalled = (): boolean => {
   if (typeof window === 'undefined') return false;
-  const { ethereum } = window as unknown as { ethereum?: { isMetaMask?: boolean } };
+  const { ethereum } = window as unknown as {
+    ethereum?: { isMetaMask?: boolean };
+  };
   return Boolean(ethereum && ethereum.isMetaMask);
 };
 
 // Request account access
 export const connectWallet = async (): Promise<string[]> => {
   if (!isMetaMaskInstalled()) {
-    throw new Error('MetaMask is not installed. Please install it to continue.');
+    throw new Error(
+      'MetaMask is not installed. Please install it to continue.'
+    );
   }
 
-  const { ethereum } = window as unknown as { ethereum?: { request: (args: { method: string; params?: unknown[] }) => Promise<unknown> } };
+  const { ethereum } = window as unknown as {
+    ethereum?: {
+      request: (args: {
+        method: string;
+        params?: unknown[];
+      }) => Promise<unknown>;
+    };
+  };
 
   try {
     // Request account access
-    const accounts = await ethereum?.request({
+    const accounts = (await ethereum?.request({
       method: 'eth_requestAccounts',
-    }) as string[];
+    })) as string[];
 
     // Try to switch to axionax Testnet
     try {
@@ -76,12 +87,19 @@ export const connectWallet = async (): Promise<string[]> => {
 export const getCurrentAccount = async (): Promise<string | null> => {
   if (!isMetaMaskInstalled()) return null;
 
-  const { ethereum } = window as unknown as { ethereum?: { request: (args: { method: string; params?: unknown[] }) => Promise<unknown> } };
+  const { ethereum } = window as unknown as {
+    ethereum?: {
+      request: (args: {
+        method: string;
+        params?: unknown[];
+      }) => Promise<unknown>;
+    };
+  };
 
   try {
-    const accounts = await ethereum?.request({
+    const accounts = (await ethereum?.request({
       method: 'eth_accounts',
-    }) as string[];
+    })) as string[];
     return accounts[0] || null;
   } catch (error) {
     console.error('Error getting current account:', error);
@@ -93,13 +111,20 @@ export const getCurrentAccount = async (): Promise<string | null> => {
 export const getBalance = async (address: string): Promise<string> => {
   if (!isMetaMaskInstalled()) return '0';
 
-  const { ethereum } = window as unknown as { ethereum?: { request: (args: { method: string; params?: unknown[] }) => Promise<unknown> } };
+  const { ethereum } = window as unknown as {
+    ethereum?: {
+      request: (args: {
+        method: string;
+        params?: unknown[];
+      }) => Promise<unknown>;
+    };
+  };
 
   try {
-    const balance = await ethereum?.request({
+    const balance = (await ethereum?.request({
       method: 'eth_getBalance',
       params: [address, 'latest'],
-    }) as string;
+    })) as string;
     // Convert from wei to AXX
     return (parseInt(balance, 16) / 1e18).toFixed(4);
   } catch (error) {
@@ -112,12 +137,19 @@ export const getBalance = async (address: string): Promise<string> => {
 export const getCurrentChainId = async (): Promise<string | null> => {
   if (!isMetaMaskInstalled()) return null;
 
-  const { ethereum } = window as unknown as { ethereum?: { request: (args: { method: string; params?: unknown[] }) => Promise<unknown> } };
+  const { ethereum } = window as unknown as {
+    ethereum?: {
+      request: (args: {
+        method: string;
+        params?: unknown[];
+      }) => Promise<unknown>;
+    };
+  };
 
   try {
-    const chainId = await ethereum?.request({
+    const chainId = (await ethereum?.request({
       method: 'eth_chainId',
-    }) as string;
+    })) as string;
     return chainId;
   } catch (error) {
     console.error('Error getting chain ID:', error);

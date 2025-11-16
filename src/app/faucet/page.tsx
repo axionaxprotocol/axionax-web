@@ -7,12 +7,12 @@ import Card, { CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 
-export default function Faucet() {
+export default function Faucet(): React.JSX.Element {
   const [address, setAddress] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
 
-  const handleClaim = async () => {
+  const handleClaim = async (): Promise<void> => {
     if (!address) {
       setMessage('Please enter a valid address');
       return;
@@ -22,10 +22,11 @@ export default function Faucet() {
     setMessage('');
 
     // Simulate API call
-    setTimeout(() => {
-      setLoading(false);
-      setMessage('✅ Successfully sent 100 AX to your address! Check your wallet in a few seconds.');
-    }, 2000);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setLoading(false);
+    setMessage(
+      '✅ Successfully sent 100 AX to your address! Check your wallet in a few seconds.'
+    );
   };
 
   return (
@@ -34,7 +35,9 @@ export default function Faucet() {
       <main className="container-custom py-16">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold gradient-text mb-4">Testnet Faucet</h1>
+            <h1 className="text-4xl font-bold gradient-text mb-4">
+              Testnet Faucet
+            </h1>
             <p className="text-dark-400 text-lg">
               Get free testnet AX tokens for development and testing
             </p>
@@ -62,7 +65,7 @@ export default function Faucet() {
                 <Button
                   variant="primary"
                   className="w-full"
-                  onClick={handleClaim}
+                  onClick={() => void handleClaim()}
                   isLoading={loading}
                   disabled={loading || !address}
                 >
@@ -70,11 +73,13 @@ export default function Faucet() {
                 </Button>
 
                 {message && (
-                  <div className={`p-4 rounded-lg ${
-                    message.includes('✅') 
-                      ? 'bg-green-500/10 border border-green-500/20 text-green-400'
-                      : 'bg-yellow-500/10 border border-yellow-500/20 text-yellow-400'
-                  }`}>
+                  <div
+                    className={`p-4 rounded-lg ${
+                      message.includes('✅')
+                        ? 'bg-green-500/10 border border-green-500/20 text-green-400'
+                        : 'bg-yellow-500/10 border border-yellow-500/20 text-yellow-400'
+                    }`}
+                  >
                     {message}
                   </div>
                 )}
@@ -91,25 +96,29 @@ export default function Faucet() {
                 <div className="flex items-start gap-3">
                   <div className="text-primary-500 mt-1">•</div>
                   <div>
-                    <strong className="text-white">Amount:</strong> 100 AX per request
+                    <strong className="text-white">Amount:</strong> 100 AX per
+                    request
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="text-primary-500 mt-1">•</div>
                   <div>
-                    <strong className="text-white">Cooldown:</strong> 24 hours between requests
+                    <strong className="text-white">Cooldown:</strong> 24 hours
+                    between requests
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="text-primary-500 mt-1">•</div>
                   <div>
-                    <strong className="text-white">Network:</strong> axionax Testnet
+                    <strong className="text-white">Network:</strong> axionax
+                    Testnet
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="text-primary-500 mt-1">•</div>
                   <div>
-                    <strong className="text-white">Purpose:</strong> For testing and development only
+                    <strong className="text-white">Purpose:</strong> For testing
+                    and development only
                   </div>
                 </div>
               </div>
@@ -119,7 +128,10 @@ export default function Faucet() {
           <div className="mt-8 text-center">
             <p className="text-dark-500 text-sm">
               Need more tokens? Join our{' '}
-              <a href="https://discord.gg/axionax" className="text-primary-400 hover:text-primary-300">
+              <a
+                href="https://discord.gg/axionax"
+                className="text-primary-400 hover:text-primary-300"
+              >
                 Discord
               </a>{' '}
               for developer support.

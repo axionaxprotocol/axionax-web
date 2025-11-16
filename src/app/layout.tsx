@@ -1,24 +1,22 @@
-﻿import type { Metadata } from 'next'
-import './globals.css'
-import { Web3Provider } from '@/contexts/Web3Context'
+﻿import type { Metadata } from 'next';
+import './globals.css';
+import { Web3Provider } from '@/contexts/Web3Context';
 
 export const metadata: Metadata = {
   title: 'axionax Protocol',
   description: 'Layer-1 blockchain for decentralized compute',
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body>
-        <Web3Provider>
-          {children}
-        </Web3Provider>
+        <Web3Provider>{children}</Web3Provider>
       </body>
     </html>
-  )
+  );
 }

@@ -105,18 +105,24 @@ export default function Roadmap() {
                 className={`relative animate-fade-in-up ${
                   index % 2 === 0 ? 'md:pr-1/2' : 'md:pl-1/2 md:ml-auto'
                 }`}
-                style={{ animationDelay: `${index * 100}ms` } as React.CSSProperties}
+                style={
+                  { animationDelay: `${index * 100}ms` } as React.CSSProperties
+                }
               >
                 {/* Timeline Dot */}
                 <div className="absolute left-0 md:left-1/2 top-6 w-4 h-4 bg-primary-500 rounded-full border-4 border-dark-950 transform md:-translate-x-1/2 hidden md:block" />
 
-                <div className={`card-hover ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}>
+                <div
+                  className={`card-hover ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}
+                >
                   <div className="flex items-center justify-between mb-4">
                     <div>
                       <div className="text-sm text-primary-400 font-medium mb-1">
                         {phase.phase}
                       </div>
-                      <h3 className="text-xl font-bold text-white">{phase.title}</h3>
+                      <h3 className="text-xl font-bold text-white">
+                        {phase.title}
+                      </h3>
                     </div>
                     {getStatusBadge(phase.status)}
                   </div>
@@ -132,8 +138,8 @@ export default function Roadmap() {
                             phase.status === 'completed'
                               ? 'text-green-400'
                               : phase.status === 'in-progress'
-                              ? 'text-yellow-400'
-                              : 'text-dark-600'
+                                ? 'text-yellow-400'
+                                : 'text-dark-600'
                           }`}
                           fill="currentColor"
                           viewBox="0 0 20 20"

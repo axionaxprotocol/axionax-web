@@ -30,7 +30,7 @@ export default function Technology() {
     {
       category: 'Consensus',
       items: [
-        { name: 'PoPC', description: 'Proof of Positive Contribution' },
+        { name: 'PoPC', description: 'Proof of Probabilistic Checking' },
         { name: 'BFT', description: 'Byzantine Fault Tolerance' },
         { name: 'Finality Gadget', description: 'Fast finality mechanism' },
       ],
@@ -43,7 +43,8 @@ export default function Technology() {
         <div className="text-center mb-16">
           <h2 className="gradient-text mb-4">Technology Stack</h2>
           <p className="text-dark-400 text-lg max-w-2xl mx-auto">
-            Built with industry-leading technologies for maximum performance and security
+            Built with industry-leading technologies for maximum performance and
+            security
           </p>
         </div>
 
@@ -52,7 +53,11 @@ export default function Technology() {
             <div
               key={tech.category}
               className="animate-fade-in-up"
-              style={{ animationDelay: `${categoryIndex * 100}ms` } as React.CSSProperties}
+              style={
+                {
+                  animationDelay: `${categoryIndex * 100}ms`,
+                } as React.CSSProperties
+              }
             >
               <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
                 <span className="w-1 h-6 bg-gradient-primary rounded-full" />
@@ -76,7 +81,9 @@ export default function Technology() {
 
         {/* Code Example */}
         <div className="mt-16 card-hover">
-          <h3 className="text-xl font-bold text-white mb-4">Quick Start Example</h3>
+          <h3 className="text-xl font-bold text-white mb-4">
+            Quick Start Example
+          </h3>
           <pre className="code-block">
             <code className="text-green-400">{`// Initialize axionax SDK
 import { axionax, Wallet } from '@axionax/sdk';
