@@ -7,7 +7,7 @@ interface WalletState {
   balance: string | null;
   chainId: number | null;
   isConnected: boolean;
-  
+
   // Actions
   setWalletData: (data: {
     address: string;
@@ -37,7 +37,7 @@ export const useWalletStore = create<WalletState>()(
             chainId: data.chainId,
             isConnected: true,
           }),
-        
+
         disconnectWallet: () =>
           set({
             address: null,

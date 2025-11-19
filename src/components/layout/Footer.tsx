@@ -1,9 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 
-interface Props {}
-
-export default function Footer(_props: Props) {
+// Footer component - Site footer with links and info
+export default function Footer(): React.JSX.Element {
   const footerLinks = {
     product: [
       { name: 'Explorer', href: '/explorer' },

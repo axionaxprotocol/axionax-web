@@ -1,9 +1,8 @@
 import React from 'react';
 import Badge from '@/components/ui/Badge';
 
-interface Props {}
-
-export default function Roadmap(_props: Props) {
+// Roadmap component - Show project milestones and timeline
+export default function Roadmap(): React.JSX.Element {
   const roadmapPhases = [
     {
       phase: 'Q4 2024',

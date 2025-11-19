@@ -1,9 +1,8 @@
 import React from 'react';
 import Badge from '@/components/ui/Badge';
 
-interface Props {}
-
-export default function Technology(_props: Props) {
+// Technology component - Display tech stack information
+export default function Technology(): React.JSX.Element {
   const techStack = [
     {
       category: 'Core',

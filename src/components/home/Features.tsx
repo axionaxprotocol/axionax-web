@@ -1,9 +1,8 @@
 import React from 'react';
 import Card, { CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 
-interface Props {}
-
-export default function Features(_props: Props) {
+// Features component - Showcase key platform features
+export default function Features(): React.JSX.Element {
   const features = [
     {
       title: 'Proof of Probabilistic Checking',

@@ -4,7 +4,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Card, { CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 
-export default function Explorer() {
+export default function Explorer(): React.JSX.Element {
   return (
     <div className="min-h-screen bg-dark-950">
       <Navbar />

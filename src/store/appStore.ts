@@ -6,7 +6,7 @@ interface AppState {
   // UI State
   isSidebarOpen: boolean;
   theme: 'light' | 'dark';
-  
+
   // Actions
   toggleSidebar: () => void;
   setSidebarOpen: (open: boolean) => void;
@@ -25,9 +25,9 @@ export const useAppStore = create<AppState>()(
       // Actions
       toggleSidebar: () =>
         set((state) => ({ isSidebarOpen: !state.isSidebarOpen })),
-      
+
       setSidebarOpen: (open) => set({ isSidebarOpen: open }),
-      
+
       setTheme: (theme) => set({ theme }),
     }),
     {

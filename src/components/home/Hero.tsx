@@ -2,9 +2,8 @@ import React from 'react';
 import Button from '@/components/ui/Button';
 import Link from 'next/link';
 
-interface Props {}
-
-export default function Hero(_props: Props) {
+// Hero component - Landing page hero section
+export default function Hero(): React.JSX.Element {
   return (
     <section className="section relative overflow-hidden">
       {/* Background Effects */}

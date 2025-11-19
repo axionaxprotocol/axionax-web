@@ -3,7 +3,7 @@ import Footer from '@/components/layout/Footer';
 import Card, { CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import Link from 'next/link';
 
-export default function Docs() {
+export default function Docs(): React.JSX.Element {
   const DOCS_BASE = 'https://axionaxprotocol.github.io/axionax-docs';
 
   const docSections = [

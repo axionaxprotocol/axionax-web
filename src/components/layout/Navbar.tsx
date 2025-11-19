@@ -4,9 +4,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import ConnectButton from '@/components/wallet/ConnectButton';
 
-interface Props {}
-
-export default function Navbar(_props: Props) {
+// Navbar component - Main navigation bar with mobile menu
+export default function Navbar(): React.JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
 
   const navigation = [
