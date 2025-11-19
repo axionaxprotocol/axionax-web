@@ -1,7 +1,9 @@
 import React from 'react';
 import Badge from '@/components/ui/Badge';
 
-export default function Roadmap() {
+interface Props {}
+
+export default function Roadmap(_props: Props) {
   const roadmapPhases = [
     {
       phase: 'Q4 2024',

@@ -1,7 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-export default function Footer() {
+interface Props {}
+
+export default function Footer(_props: Props) {
   const footerLinks = {
     product: [
       { name: 'Explorer', href: '/explorer' },

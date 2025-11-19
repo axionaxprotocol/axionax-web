@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from 'next';
 import './globals.css';
 import { Web3Provider } from '@/contexts/Web3Context';
+import { QueryProvider } from '@/providers/QueryProvider';
 
 export const metadata: Metadata = {
   title: 'axionax Protocol',
@@ -15,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Web3Provider>{children}</Web3Provider>
+        <QueryProvider>
+          <Web3Provider>{children}</Web3Provider>
+        </QueryProvider>
       </body>
     </html>
   );

@@ -1,7 +1,9 @@
 import React from 'react';
 import Card, { CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 
-export default function Features() {
+interface Props {}
+
+export default function Features(_props: Props) {
   const features = [
     {
       title: 'Proof of Probabilistic Checking',
@@ -13,6 +15,8 @@ export default function Features() {
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
+          aria-label="Proof of Probabilistic Checking icon"
+          role="img"
         >
           <path
             strokeLinecap="round"
@@ -33,6 +37,8 @@ export default function Features() {
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
+          aria-label="High performance icon"
+          role="img"
         >
           <path
             strokeLinecap="round"
@@ -53,6 +59,8 @@ export default function Features() {
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
+          aria-label="AI infrastructure icon"
+          role="img"
         >
           <path
             strokeLinecap="round"
@@ -73,6 +81,8 @@ export default function Features() {
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
+          aria-label="Low transaction cost icon"
+          role="img"
         >
           <path
             strokeLinecap="round"
@@ -93,6 +103,8 @@ export default function Features() {
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
+          aria-label="Developer friendly icon"
+          role="img"
         >
           <path
             strokeLinecap="round"
@@ -113,6 +125,8 @@ export default function Features() {
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
+          aria-label="Enterprise security icon"
+          role="img"
         >
           <path
             strokeLinecap="round"

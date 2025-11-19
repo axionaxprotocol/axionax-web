@@ -1,7 +1,9 @@
 import React from 'react';
 import Badge from '@/components/ui/Badge';
 
-export default function Technology() {
+interface Props {}
+
+export default function Technology(_props: Props) {
   const techStack = [
     {
       category: 'Core',

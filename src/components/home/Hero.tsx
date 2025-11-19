@@ -2,7 +2,9 @@ import React from 'react';
 import Button from '@/components/ui/Button';
 import Link from 'next/link';
 
-export default function Hero() {
+interface Props {}
+
+export default function Hero(_props: Props) {
   return (
     <section className="section relative overflow-hidden">
       {/* Background Effects */}
@@ -51,6 +53,8 @@ export default function Hero() {
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-label="Arrow right icon"
+                role="img"
               >
                 <path
                   strokeLinecap="round"
@@ -68,6 +72,8 @@ export default function Hero() {
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  aria-label="Documentation icon"
+                  role="img"
                 >
                   <path
                     strokeLinecap="round"

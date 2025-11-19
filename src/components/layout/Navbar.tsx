@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import ConnectButton from '@/components/wallet/ConnectButton';
 
-export default function Navbar() {
+interface Props {}
+
+export default function Navbar(_props: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
   const navigation = [
