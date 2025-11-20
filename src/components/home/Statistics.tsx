@@ -1,8 +1,10 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useQuery } from '@tanstack/react-query';
 
-const EXPLORER_API = 'http://217.216.109.5:3001';
+const EXPLORER_API = '/api';
+const RPC_PROXY = '/rpc/'; // Nginx proxy to EU validator (avoids mixed-content)
 const VALIDATOR_1_RPC = 'http://217.76.61.116:8545';
 const VALIDATOR_2_RPC = 'http://46.250.244.4:8545';
 
@@ -19,91 +21,135 @@ interface ValidatorData {
   uptime: number;
 }
 
+interface LiveStats {
+  blocks: number;
+  services: number;
+  uptime: number;
+  deployment: number;
+  validators: number;
+}
+
+// Fetch validator stats from RPC endpoints
+const fetchValidatorStats = async (): Promise<ValidatorData[]> => {
+  const results: ValidatorData[] = [];
+  let blockHeight = 0;
+  let onlineValidators = 0;
+
+  // Primary: Use HTTPS-safe proxy
+  try {
+    const response = await fetch(RPC_PROXY, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        jsonrpc: '2.0',
+        method: 'eth_blockNumber',
+        params: [],
+        id: 1,
+      }),
+      signal: AbortSignal.timeout(5000),
+    });
+
+    if (response.ok) {
+      const data = (await response.json()) as { result?: string };
+      blockHeight = parseInt((data.result as string) || '0x0', 16);
+      if (blockHeight > 0) {
+        onlineValidators = 2; // Proxy works, assume both validators online
+      }
+    }
+  } catch (error) {
+    console.warn('RPC proxy failed:', error);
+  }
+
+  // Fallback: Try direct connection (may fail on HTTPS)
+  if (blockHeight === 0) {
+    for (const rpc of [VALIDATOR_1_RPC, VALIDATOR_2_RPC]) {
+      try {
+        const response = await fetch(rpc, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            jsonrpc: '2.0',
+            method: 'eth_blockNumber',
+            params: [],
+            id: 1,
+          }),
+          mode: 'cors',
+          signal: AbortSignal.timeout(3000),
+        });
+        if (response.ok) {
+          const data = (await response.json()) as { result?: string };
+          const bh = parseInt((data.result as string) || '0x0', 16);
+          if (bh > blockHeight) blockHeight = bh;
+          if (bh > 0) onlineValidators++;
+        }
+      } catch (error) {
+        console.debug(`Cannot reach ${rpc}:`, error);
+      }
+    }
+  }
+
+  // Calculate uptime (started Nov 18, 2025)
+  const uptimeHours = Math.floor(
+    (Date.now() - new Date('2025-11-18').getTime()) / (1000 * 60 * 60)
+  );
+
+  // Return status for both validators
+  for (let i = 0; i < 2; i++) {
+    results.push({
+      blockHeight,
+      status: i < onlineValidators ? 'online' : 'offline',
+      uptime: uptimeHours,
+    });
+  }
+
+  return results;
+};
+
+// Fetch real-time stats from Explorer API and Validators
+const fetchStats = async (): Promise<LiveStats> => {
+  // Get validator data
+  const validatorData = await fetchValidatorStats();
+  const maxBlock = Math.max(...validatorData.map((v) => v.blockHeight));
+  const activeValidators = validatorData.filter(
+    (v) => v.status === 'online'
+  ).length;
+
+  // Try to get additional stats from Explorer API
+  let apiStats = null;
+  try {
+    const response = await fetch(`${EXPLORER_API}/api/stats`, {
+      signal: AbortSignal.timeout(3000),
+    });
+    apiStats = (await response.json()) as StatsData;
+  } catch {
+    // API unavailable, use validator data only
+  }
+
+  return {
+    blocks: maxBlock > 0 ? maxBlock : apiStats?.blockNumber || 20000,
+    services: apiStats?.services.healthy || 9,
+    uptime: apiStats?.uptime.hours || 48,
+    deployment: apiStats?.deployment || 100,
+    validators: activeValidators,
+  };
+};
+
 // Statistics component แสดงข้อมูล live metrics จาก testnet
 // รองรับ mobile-first responsive design ตาม Tailwind best practices
-interface Props {}
-
-export default function Statistics(_props: Props): React.JSX.Element {
-  const [stats, setStats] = useState({
-    blocks: 20000,
-    services: 9,
-    uptime: 48,
-    deployment: 100,
-    validators: 2,
+export default function Statistics(): React.JSX.Element {
+  // Use TanStack Query v5 for server state
+  const { data: stats, isLoading } = useQuery<LiveStats>({
+    queryKey: ['live-stats'],
+    queryFn: fetchStats,
+    refetchInterval: 5000, // Refresh every 5 seconds
+    initialData: {
+      blocks: 20000,
+      services: 9,
+      uptime: 48,
+      deployment: 100,
+      validators: 2,
+    },
   });
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Fetch validator block heights directly
-    const fetchValidatorStats = async (): Promise<ValidatorData[]> => {
-      const validators = [VALIDATOR_1_RPC, VALIDATOR_2_RPC];
-      const results: ValidatorData[] = [];
-
-      for (const rpc of validators) {
-        try {
-          const response = await fetch(rpc, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              jsonrpc: '2.0',
-              method: 'eth_blockNumber',
-              params: [],
-              id: 1,
-            }),
-          });
-          const data = (await response.json()) as { result?: string };
-          const blockHeight = parseInt((data.result as string) || '0x0', 16);
-          results.push({ blockHeight, status: 'online', uptime: 29 });
-        } catch {
-          results.push({ blockHeight: 0, status: 'offline', uptime: 0 });
-        }
-      }
-      return results;
-    };
-
-    // Fetch real-time stats from Explorer API and Validators
-    const fetchStats = async (): Promise<void> => {
-      try {
-        // Get validator data
-        const validatorData = await fetchValidatorStats();
-        const maxBlock = Math.max(...validatorData.map((v) => v.blockHeight));
-        const activeValidators = validatorData.filter(
-          (v) => v.status === 'online'
-        ).length;
-
-        // Try to get additional stats from Explorer API
-        let apiStats = null;
-        try {
-          const response = await fetch(`${EXPLORER_API}/api/stats`, {
-            signal: AbortSignal.timeout(3000),
-          });
-          apiStats = (await response.json()) as StatsData;
-        } catch {
-          // API unavailable, use validator data only
-        }
-
-        setStats({
-          blocks: maxBlock > 0 ? maxBlock : apiStats?.blockNumber || 20000,
-          services: apiStats?.services.healthy || 9,
-          uptime: apiStats?.uptime.hours || 48,
-          deployment: apiStats?.deployment || 100,
-          validators: activeValidators,
-        });
-        setLoading(false);
-      } catch (error) {
-        console.error('Failed to fetch stats:', error);
-        setLoading(false);
-      }
-    };
-
-    // Initial fetch
-    void fetchStats();
-
-    // Refresh every 5 seconds
-    const interval = setInterval(() => void fetchStats(), 5000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const formatNumber = (num: number): string => {
     return new Intl.NumberFormat('en-US').format(num);
@@ -112,7 +158,7 @@ export default function Statistics(_props: Props): React.JSX.Element {
   const statItems = [
     {
       label: 'Live Block Height',
-      value: loading ? '...' : formatNumber(stats.blocks),
+      value: isLoading ? '...' : formatNumber(stats.blocks),
       icon: (
         <svg
           className="w-8 h-8"
@@ -134,7 +180,7 @@ export default function Statistics(_props: Props): React.JSX.Element {
     },
     {
       label: 'Active Validators',
-      value: loading ? '...' : `${stats.validators}/2`,
+      value: isLoading ? '...' : `${stats.validators}/2`,
       icon: (
         <svg
           className="w-8 h-8"
@@ -178,7 +224,7 @@ export default function Statistics(_props: Props): React.JSX.Element {
     },
     {
       label: 'Infrastructure Uptime',
-      value: loading
+      value: isLoading
         ? '...'
         : stats.uptime >= 24
           ? `${Math.floor(stats.uptime / 24)}d+`

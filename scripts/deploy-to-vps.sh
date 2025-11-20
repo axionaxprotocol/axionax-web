@@ -39,11 +39,26 @@ rsync -avz --delete \
 # Update nginx configuration if needed
 echo -e "${YELLOW}Updating nginx configuration...${NC}"
 ssh ${VPS_USER}@${VPS_IP} << 'ENDSSH'
-# Create nginx config for axionax web
+# Create nginx config for axionax web with SSL
 cat > /etc/nginx/sites-available/axionax-web << 'EOF'
+# HTTP - Redirect to HTTPS
 server {
     listen 80;
-    server_name 217.216.109.5;
+    server_name axionax.org www.axionax.org;
+    return 301 https://axionax.org$request_uri;
+}
+
+# HTTPS - Main site
+server {
+    listen 443 ssl http2;
+    server_name axionax.org www.axionax.org;
+    
+    # SSL Configuration
+    ssl_certificate /etc/letsencrypt/live/axionax.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/axionax.org/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
     
     root /var/www/axionax;
     index index.html;
@@ -52,6 +67,7 @@ server {
     add_header X-Frame-Options "SAMEORIGIN" always;
     add_header X-Content-Type-Options "nosniff" always;
     add_header X-XSS-Protection "1; mode=block" always;
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
     
     # Gzip compression
     gzip on;
@@ -70,6 +86,19 @@ server {
     # API proxy to explorer backend
     location /api/ {
         proxy_pass http://localhost:3001/api/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # RPC Proxy for Testnet (EU Validator)
+    location /rpc/ {
+        proxy_pass http://217.76.61.116:8545/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';

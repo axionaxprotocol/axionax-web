@@ -8,8 +8,12 @@ export const AXIONAX_TESTNET = {
     symbol: 'AXX',
     decimals: 18,
   },
-  rpcUrls: ['http://217.216.109.5:8545'],
-  blockExplorerUrls: ['http://217.216.109.5:3001'],
+  rpcUrls: [
+    'https://axionax.org/rpc/', // Proxy to EU Validator (SSL)
+    'http://217.76.61.116:8545', // Direct EU Validator
+    'http://46.250.244.4:8545', // Direct AU Validator
+  ],
+  blockExplorerUrls: ['https://axionax.org/api/'],
 };
 
 export interface MetaMaskError extends Error {

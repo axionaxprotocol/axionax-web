@@ -71,6 +71,8 @@ ssh root@217.216.109.5 "cd /opt/axionax-web && git pull && docker-compose up -d 
 6. **Deploy to VPS** - Pull and rebuild on server
 7. **Verification** - Test website accessibility
 
+> Real-time Metrics: If homepage metrics don't update over HTTPS, configure same-origin reverse proxies and keep the frontend using relative paths. See `docs/REALTIME_METRICS.md`.
+
 **Usage:**
 ```powershell
 # Navigate to axionax-web directory
