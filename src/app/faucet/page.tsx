@@ -1,32 +1,73 @@
 'use client';
 
 import { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Card, { CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 
+interface FaucetResponse {
+  success: boolean;
+  message: string;
+  txHash?: string;
+  amount?: string;
+}
+
+const FAUCET_AMOUNT = '10'; // 10 AXX per request
+
+// Validate Ethereum address format
+const isValidAddress = (addr: string): boolean => {
+  return /^0x[a-fA-F0-9]{40}$/.test(addr);
+};
+
+// Request tokens from faucet
+const requestTokens = async (address: string): Promise<FaucetResponse> => {
+  // For now, use mock implementation since API is under development
+  // TODO: Replace with real API call when available
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+
+  // Mock response
+  return {
+    success: true,
+    message: `Successfully sent ${FAUCET_AMOUNT} AXX to ${address.slice(0, 6)}...${address.slice(-4)}`,
+    txHash: '0x' + Math.random().toString(16).slice(2, 66),
+    amount: FAUCET_AMOUNT,
+  };
+
+  // Real implementation (when API is ready):
+  // const response = await fetch(FAUCET_API, {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify({ address }),
+  // });
+  // if (!response.ok) throw new Error('Faucet request failed');
+  // return await response.json();
+};
+
 export default function Faucet(): React.JSX.Element {
   const [address, setAddress] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState('');
+  const [lastSuccess, setLastSuccess] = useState<FaucetResponse | null>(null);
 
-  const handleClaim = async (): Promise<void> => {
-    if (!address) {
-      setMessage('Please enter a valid address');
+  const mutation = useMutation({
+    mutationFn: requestTokens,
+    onSuccess: (data) => {
+      setLastSuccess(data);
+      setAddress(''); // Clear input on success
+    },
+  });
+
+  const handleClaim = (): void => {
+    if (!address.trim()) {
       return;
     }
 
-    setLoading(true);
-    setMessage('');
+    if (!isValidAddress(address)) {
+      return;
+    }
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setLoading(false);
-    setMessage(
-      '✅ Successfully sent 100 AX to your address! Check your wallet in a few seconds.'
-    );
+    mutation.mutate(address);
   };
 
   return (
@@ -55,32 +96,53 @@ export default function Faucet(): React.JSX.Element {
                   </label>
                   <Input
                     type="text"
-                    placeholder="0x..."
+                    placeholder="0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb4"
                     value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    className="w-full"
+                    onChange={(e) => setAddress(e.target.value.trim())}
+                    className="w-full font-mono"
+                    disabled={mutation.isPending}
                   />
+                  {address && !isValidAddress(address) && (
+                    <p className="text-red-400 text-sm mt-2">
+                      Invalid Ethereum address format
+                    </p>
+                  )}
                 </div>
 
                 <Button
                   variant="primary"
                   className="w-full"
-                  onClick={() => void handleClaim()}
-                  isLoading={loading}
-                  disabled={loading || !address}
+                  onClick={handleClaim}
+                  isLoading={mutation.isPending}
+                  disabled={
+                    mutation.isPending || !address || !isValidAddress(address)
+                  }
                 >
-                  {loading ? 'Processing...' : 'Claim 100 AX'}
+                  {mutation.isPending
+                    ? 'Processing...'
+                    : `Claim ${FAUCET_AMOUNT} AXX`}
                 </Button>
 
-                {message && (
-                  <div
-                    className={`p-4 rounded-lg ${
-                      message.includes('✅')
-                        ? 'bg-green-500/10 border border-green-500/20 text-green-400'
-                        : 'bg-yellow-500/10 border border-yellow-500/20 text-yellow-400'
-                    }`}
-                  >
-                    {message}
+                {mutation.isError && (
+                  <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400">
+                    ❌{' '}
+                    {mutation.error instanceof Error
+                      ? mutation.error.message
+                      : 'Failed to claim tokens. Please try again.'}
+                  </div>
+                )}
+
+                {lastSuccess && (
+                  <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/20 text-green-400 space-y-2">
+                    <div>✅ {lastSuccess.message}</div>
+                    {lastSuccess.txHash && (
+                      <div className="text-sm font-mono break-all">
+                        TX: {lastSuccess.txHash}
+                      </div>
+                    )}
+                    <div className="text-xs text-green-300">
+                      Check your wallet in a few seconds
+                    </div>
                   </div>
                 )}
               </div>
@@ -96,8 +158,8 @@ export default function Faucet(): React.JSX.Element {
                 <div className="flex items-start gap-3">
                   <div className="text-primary-500 mt-1">•</div>
                   <div>
-                    <strong className="text-white">Amount:</strong> 100 AX per
-                    request
+                    <strong className="text-white">Amount:</strong>{' '}
+                    {FAUCET_AMOUNT} AXX per request
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -110,8 +172,8 @@ export default function Faucet(): React.JSX.Element {
                 <div className="flex items-start gap-3">
                   <div className="text-primary-500 mt-1">•</div>
                   <div>
-                    <strong className="text-white">Network:</strong> axionax
-                    Testnet
+                    <strong className="text-white">Network:</strong> Axionax
+                    Testnet (Chain ID: 86137)
                   </div>
                 </div>
                 <div className="flex items-start gap-3">

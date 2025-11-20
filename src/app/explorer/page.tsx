@@ -1,10 +1,47 @@
 'use client';
 
+import { useQuery } from '@tanstack/react-query';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Card, { CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 
+interface Block {
+  number: number;
+  hash: string;
+  timestamp: number;
+  transactions: number;
+  miner: string;
+  gasUsed: string;
+  gasLimit: string;
+}
+
+interface BlocksResponse {
+  blocks: Block[];
+  total: number;
+  page: number;
+  pageSize: number;
+}
+
+const fetchBlocks = async (): Promise<BlocksResponse> => {
+  const response = await fetch('/api/blocks?page=1&pageSize=10');
+  if (!response.ok) throw new Error('Failed to fetch blocks');
+  return (await response.json()) as BlocksResponse;
+};
+
+const formatTimestamp = (timestamp: number): string => {
+  const seconds = Math.floor((Date.now() - timestamp) / 1000);
+  if (seconds < 60) return `${seconds}s ago`;
+  if (seconds < 3600) return `${Math.floor(seconds / 60)}m ago`;
+  if (seconds < 86400) return `${Math.floor(seconds / 3600)}h ago`;
+  return `${Math.floor(seconds / 86400)}d ago`;
+};
+
 export default function Explorer(): React.JSX.Element {
+  const { data: blocksData, isLoading } = useQuery<BlocksResponse>({
+    queryKey: ['blocks'],
+    queryFn: fetchBlocks,
+    refetchInterval: 5000, // Refresh every 5 seconds
+  });
   return (
     <div className="min-h-screen bg-dark-950">
       <Navbar />
@@ -24,20 +61,30 @@ export default function Explorer(): React.JSX.Element {
               <CardTitle className="text-primary-400">Latest Block</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold mb-2">#1,234,567</div>
-              <div className="text-sm text-dark-400">2 seconds ago</div>
+              <div className="text-3xl font-bold mb-2">
+                {isLoading
+                  ? '...'
+                  : `#${blocksData?.blocks[0]?.number.toLocaleString() || '0'}`}
+              </div>
+              <div className="text-sm text-dark-400">
+                {isLoading
+                  ? 'Loading...'
+                  : blocksData?.blocks[0]
+                    ? formatTimestamp(blocksData.blocks[0].timestamp)
+                    : 'N/A'}
+              </div>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-primary-400">
-                Total Transactions
-              </CardTitle>
+              <CardTitle className="text-primary-400">Total Blocks</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold mb-2">5,678,901</div>
-              <div className="text-sm text-dark-400">All time</div>
+              <div className="text-3xl font-bold mb-2">
+                {isLoading ? '...' : blocksData?.total.toLocaleString() || '0'}
+              </div>
+              <div className="text-sm text-dark-400">Since testnet launch</div>
             </CardContent>
           </Card>
 
@@ -48,8 +95,8 @@ export default function Explorer(): React.JSX.Element {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold mb-2">127</div>
-              <div className="text-sm text-dark-400">Online now</div>
+              <div className="text-3xl font-bold mb-2">2/2</div>
+              <div className="text-sm text-dark-400">EU + AU regions</div>
             </CardContent>
           </Card>
         </div>
@@ -59,37 +106,48 @@ export default function Explorer(): React.JSX.Element {
             <CardTitle>Recent Blocks</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <div
-                  key={i}
-                  className="flex items-center justify-between p-4 bg-dark-900 rounded-lg border border-dark-800 hover:border-primary-500/50 transition-colors"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="text-primary-400 font-mono">
-                      #{1234567 - i}
+            {isLoading ? (
+              <div className="text-center py-8 text-dark-400">
+                Loading blocks...
+              </div>
+            ) : blocksData?.blocks && blocksData.blocks.length > 0 ? (
+              <div className="space-y-4">
+                {blocksData.blocks.map((block) => (
+                  <div
+                    key={block.number}
+                    className="flex flex-col md:flex-row md:items-center md:justify-between p-4 bg-dark-900 rounded-lg border border-dark-800 hover:border-primary-500/50 transition-colors gap-3"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="text-primary-400 font-mono text-lg">
+                        #{block.number.toLocaleString()}
+                      </div>
+                      <div className="text-dark-400 text-sm">
+                        {formatTimestamp(block.timestamp)}
+                      </div>
                     </div>
-                    <div className="text-dark-400 text-sm">
-                      {i * 2} seconds ago
+                    <div className="flex items-center gap-4 text-sm">
+                      <div>
+                        <span className="text-dark-500">Txs:</span>{' '}
+                        <span className="text-white">{block.transactions}</span>
+                      </div>
+                      <div>
+                        <span className="text-dark-500">Gas:</span>{' '}
+                        <span className="text-white">
+                          {(parseInt(block.gasUsed) / 1_000_000).toFixed(2)}M
+                        </span>
+                      </div>
+                      <div className="hidden md:block font-mono text-xs text-dark-500">
+                        {block.hash.slice(0, 10)}...{block.hash.slice(-8)}
+                      </div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <div className="text-sm">
-                      <span className="text-dark-500">Txs:</span>{' '}
-                      <span className="text-white">
-                        {Math.floor(Math.random() * 50) + 10}
-                      </span>
-                    </div>
-                    <div className="text-sm">
-                      <span className="text-dark-500">Size:</span>{' '}
-                      <span className="text-white">
-                        {Math.floor(Math.random() * 100) + 50} KB
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-8 text-dark-400">
+                No blocks found
+              </div>
+            )}
           </CardContent>
         </Card>
 
