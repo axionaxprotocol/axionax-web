@@ -5,79 +5,65 @@ import Footer from '@/components/layout/Footer';
 export default function InfrastructurePage(): React.JSX.Element {
   const services = [
     {
-      name: 'RPC Node (HTTP)',
+      name: 'RPC Node',
       port: 8545,
       status: 'healthy',
-      uptime: '18h+',
-      details: 'Mock JSON-RPC 2.0',
-    },
-    {
-      name: 'RPC Node (WebSocket)',
-      port: 8546,
-      status: 'healthy',
-      uptime: '18h+',
-      details: 'Real-time updates',
+      uptime: '2d+',
+      details: 'axionax-rpc container',
     },
     {
       name: 'PostgreSQL',
       port: 5432,
       status: 'healthy',
-      uptime: '44h+',
-      details: 'Database layer',
+      uptime: '3d+',
+      details: 'axionax-postgres',
     },
     {
       name: 'Redis',
       port: 6379,
       status: 'healthy',
-      uptime: '44h+',
-      details: 'Cache layer',
+      uptime: '3d+',
+      details: 'axionax-redis',
     },
     {
       name: 'Nginx',
       port: 80,
       status: 'healthy',
-      uptime: '44h+',
-      details: 'Web server',
-    },
-    {
-      name: 'Nginx SSL',
-      port: 443,
-      status: 'healthy',
-      uptime: '44h+',
-      details: 'HTTPS encryption',
-    },
-    {
-      name: 'Grafana',
-      port: 3030,
-      status: 'healthy',
-      uptime: '15h+',
-      details: 'Monitoring v12.2.1',
-    },
-    {
-      name: 'Prometheus',
-      port: 9090,
-      status: 'healthy',
-      uptime: '15h+',
-      details: 'Metrics collection',
+      uptime: '1d7h+',
+      details: 'Reverse proxy (systemd)',
     },
     {
       name: 'Web Interface',
       port: 3000,
       status: 'healthy',
-      uptime: '23h+',
+      uptime: '3d+',
       details: 'axionax-web',
     },
     {
       name: 'Explorer API',
       port: 3001,
-      status: 'debugging',
-      uptime: 'N/A',
-      details: 'Under investigation',
+      status: 'healthy',
+      uptime: '2d+',
+      details: 'axionax-explorer-api',
     },
     {
       name: 'Faucet API',
       port: 3002,
-      status: 'debugging',
+      status: 'healthy',
+      uptime: '3d+',
+      details: 'axionax-faucet-api',
+    },
+    {
+      name: 'Grafana',
+      port: 3030,
+      status: 'pending',
+      uptime: 'N/A',
+      details: 'Not installed yet',
+    },
+    {
+      name: 'Prometheus',
+      port: 9090,
+      status: 'pending',
       uptime: 'N/A',
       details: 'Under investigation',
     },
@@ -87,6 +73,8 @@ export default function InfrastructurePage(): React.JSX.Element {
     switch (status) {
       case 'healthy':
         return 'text-green-400 bg-green-500/20';
+      case 'pending':
+        return 'text-gray-400 bg-gray-500/20';
       case 'debugging':
         return 'text-amber-400 bg-amber-500/20';
       default:
@@ -98,6 +86,8 @@ export default function InfrastructurePage(): React.JSX.Element {
     switch (status) {
       case 'healthy':
         return '✅';
+      case 'pending':
+        return '⏳';
       case 'debugging':
         return '🔧';
       default:
